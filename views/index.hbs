@@ -1,0 +1,300 @@
+{{#extend "layout"}}
+
+    {{#content "main" mode="append"}}
+    <div class="row">
+                <div class="col-3 col-md-6 col-sm-12">
+                    <div class="box box-hover">
+                        <!-- counter -->
+                      <div class="counter">
+                        <div class="counter-title">
+                            total students
+                        </div>
+                        <div class="counter-info">
+                            <div class="counter-count">
+                                6578
+                            </div>
+                            <i class="las la-user-graduate"></i>
+                        </div>
+                      </div>
+                      <!-- end counter -->
+                    </div>
+                </div>
+
+                <div class="col-3 col-md-6 col-sm-12">
+                    <div class="box box-hover">
+                        <!-- counter -->
+                      <div class="counter">
+                        <div class="counter-title">
+                            new students
+                        </div>
+                        <div class="counter-info">
+                            <div class="counter-count">
+                                6578
+                            </div>
+                            <i class="las la-user-plus"></i>
+                        </div>
+                      </div>
+                      <!-- end counter -->
+                    </div>
+                </div>
+
+                <div class="col-3 col-md-6 col-sm-12">
+                    <div class="box box-hover">
+                        <!-- counter -->
+                      <div class="counter">
+                        <div class="counter-title">
+                            total course
+                        </div>
+                        <div class="counter-info">
+                            <div class="counter-count">
+                                86
+                            </div>
+                            <i class="las la-briefcase"></i>
+                        </div>
+                      </div>
+                      <!-- end counter -->
+                    </div>
+                </div>
+
+                <div class="col-3 col-md-6 col-sm-12">
+                    <div class="box box-hover">
+                        <!-- counter -->
+                      <div class="counter">
+                        <div class="counter-title">
+                            visitors
+                        </div>
+                        <div class="counter-info">
+                            <div class="counter-count">
+                                65783
+                            </div>
+                            <i class="las la-eye"></i>
+                      </div>
+                      <!-- end counter -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3 col-md-6 col-sm-12">
+                    <!-- TOP Student-->
+                    <div class="box f-height">
+                        <div class="box-header">
+                            star students
+                        </div>
+                        <div class="box-body">
+                            <ul class="student-list">
+                                <li class="student-list-item">
+                                    <div class="item-info">
+                                        <img src="./img/user.jpg" alt="student image">
+                                        <div class="item-name">
+                                            <div class="student-name">Hoang Van Tung</div>
+                                            <div class="text-second">GCH1883</div>
+                                        </div>
+                                    </div>
+                                    <div class="item-star-info">
+                                        <div class="text-second">Web Development</div>
+                                        <div class="student-stars">Merit</div>
+                                    </div>
+                                </li>
+                                <li class="student-list-item">
+                                    <div class="item-info">
+                                        <img src="./img/user.jpg" alt="student image">
+                                        <div class="item-name">
+                                            <div class="student-name">Le Khoi Nguyen</div>
+                                            <div class="text-second">GCH18888</div>
+                                        </div>
+                                    </div>
+                                    <div class="item-star-info">
+                                        <div class="text-second">Research</div>
+                                        <div class="student-stars">Merit</div>
+                                    </div>
+                                </li>
+                                <li class="student-list-item">
+                                    <div class="item-info">
+                                        <img src="./img/user.jpg" alt="student image">
+                                        <div class="item-name">
+                                            <div class="student-name">Nguyen Trung Hieu</div>
+                                            <div class="text-second">GCH19555</div>
+                                        </div>
+                                    </div>
+                                    <div class="item-star-info">
+                                        <div class="text-second">IoT</div>
+                                        <div class="student-stars">Merit</div>
+                                    </div>
+                                </li>
+                                <li class="student-list-item">
+                                    <div class="item-info">
+                                        <img src="./img/user.jpg" alt="student image">
+                                        <div class="item-name">
+                                            <div class="student-name">Nguyen Thi Hoa An</div>
+                                            <div class="text-second">GCH18954</div>
+                                        </div>
+                                    </div>
+                                    <div class="item-star-info">
+                                        <div class="text-second">SDLC</div>
+                                        <div class="student-stars">Distinction</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- TOP student -->
+                </div>
+                <div class="col-4 col-md-6 col-sm-12">
+                    <!-- CATEGORY CHART -->
+                    <div class="box f-height">
+                        <div class="box-body">
+                            <div id="category-chart"></div>
+                        </div>
+                    </div>
+                    <!-- END CATEGORY CHART -->
+                </div>
+                <div class="col-5 col-md-12 col-sm-12">
+                    <!-- CUSTOMERS CHART -->
+                    <div class="box f-height">
+                        <div class="box-header">
+                            students
+                        </div>
+                        <div class="box-body">
+                            <div id="customer-chart"></div>
+                        </div>
+                    </div>
+                    <!-- END CUSTOMERS CHART -->
+                </div>
+                <div class="col-12">
+                    <!-- ORDERS TABLE -->
+                    <div class="box">
+                        <div class="box-header">
+                            Course List
+                        </div>
+                        <div class="box-body overflow-scroll">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Course Name</th>
+                                        <th>Date Started</th>
+                                        <th>Slot</th>
+                                        <th>Status</th>
+                                        <th>Teacher</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1670</td>
+                                        <td>
+                                            <div class="name-owner">
+                                                <span>Application Development</span>
+                                            </div>
+                                        </td>
+                                        <td>2021-05-09</td>
+                                        <td>
+                                            <span class="slot name-slot">
+                                                45 slot
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <div class="teach-status teach-paid">
+                                                <div class="dot"></div>
+                                                <span>Teaching</span>
+                                            </div>
+                                        </td>
+                                        <td>Nguyen Tran Dinh Long</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1639</td>
+                                        <td>
+                                            <div class="name-owner">
+                                                <span>Research</span>
+                                            </div>
+                                        </td>
+                                        <td>2021-05-09</td>
+                                        <td>
+                                            <span class="slot name-slot">
+                                                40 slot
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <div class="teach-status teach-paid">
+                                                <div class="dot"></div>
+                                                <span>Teaching</span>
+                                            </div>
+                                        </td>
+                                        <td>Do Tien Thanh</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1639</td>
+                                        <td>
+                                            <div class="name-owner">
+                                                <span>Research</span>
+                                            </div>
+                                        </td>
+                                        <td>2021-05-09</td>
+                                        <td>
+                                            <span class="slot name-slot">
+                                                40 slot
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <div class="teach-status teach-paid">
+                                                <div class="dot"></div>
+                                                <span>Teaching</span>
+                                            </div>
+                                        </td>
+                                        <td>Do Tien Thanh</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1670</td>
+                                        <td>
+                                            <div class="name-owner">
+                                                <span>Application Development</span>
+                                            </div>
+                                        </td>
+                                        <td>2021-05-09</td>
+                                        <td>
+                                            <span class="slot name-slot">
+                                                45 slot
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <div class="teach-status teach-paid">
+                                                <div class="dot"></div>
+                                                <span>Teaching</span>
+                                            </div>
+                                        </td>
+                                        <td>Nguyen Tran Dinh Long</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1639</td>
+                                        <td>
+                                            <div class="name-owner">
+                                                <span>Resarch</span>
+                                            </div>
+                                        </td>
+                                        <td>2021-05-09</td>
+                                        <td>
+                                            <span class="slot name-slot">
+                                                40 slot
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <div class="teach-status teach-paid">
+                                                <div class="dot"></div>
+                                                <span>Teaching</span>
+                                            </div>
+                                        </td>
+                                        <td>Do Tien Thanh</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- END TABLE -->
+                </div>
+            </div>
+        </div>
+
+
+    {{/content}}
+
+{{/extend}}

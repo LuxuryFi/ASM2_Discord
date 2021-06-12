@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://ap.greenwich.edu.vn/favicon.ico" type="image/x-icon">
+    <title>Admin</title>
+
+    <!-- Google FONT -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!-- Icon -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/grid.css">
+
+    {{#block "header"}}
+
+    {{/block}}
+
+</head>
+
+<body>
+
+    <!-- SIde bar -->
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <img src="https://ap.greenwich.edu.vn/favicon.ico" alt="Comapny logo">
+            <div class="sidebar-close" id="sidebar-close">
+                <i class='bx bx-left-arrow-alt'></i>
+            </div>
+        </div>
+        <div class="sidebar-user">
+            <div class="sidebar-user-info">
+                <img src="./img/user.jpg" alt="User picture" class="profile-image">
+                <div class="sidebar-user-name">
+                    hoang tung
+                </div>
+            </div>
+            <button class="btn btn-outline">
+                <i class='bx bx-log-out bx-flip-horizontal'></i>
+            </button>
+        </div>
+        <!-- SIDEBAR MENU -->
+        <ul class="sidebar-menu">
+            <li>
+                <a href="#" class="active">
+                    <i class='bx bx-home'></i>
+                    <span>dashboard</span>
+                </a>
+            </li>
+            <li class="sidebar-submenu">
+                <a href="#" class="sidebar-menu-dropdown">
+                    <i class="las la-user-graduate"></i>
+                    <span>Students</span>
+                    <div class="dropdown-icon"></div>
+                </a>
+                <ul class="sidebar-menu sidebar-menu-dropdown-content">
+                    <li>
+                        <a href="./StudentsList.html">
+                            Students List
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Students View
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Students Add
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Students Edit
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="sidebar-submenu">
+                <a href="#" class="sidebar-menu-dropdown">
+                    <i class="las la-chalkboard-teacher"></i>
+                    <span>Teachers</span>
+                    <div class="dropdown-icon"></div>
+                </a>
+                <ul class="sidebar-menu sidebar-menu-dropdown-content">
+                    <li>
+                        <a href="#">
+                            Teachers List
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Teachers View
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Teachers Add
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Teachers Edit
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="sidebar-submenu">
+                <a href="#" class="sidebar-menu-dropdown">
+                    <i class="las la-building"></i>
+                    <span>Departments</span>
+                    <div class="dropdown-icon"></div>
+                </a>
+                <ul class="sidebar-menu sidebar-menu-dropdown-content">
+                    <li>
+                        <a href="#">
+                            Departments List
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Departments Add
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Departments Edit
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="sidebar-submenu">
+                <a href="#" class="sidebar-menu-dropdown">
+                    <i class="las la-book-reader"></i>
+                    <span>Subjects</span>
+                    <div class="dropdown-icon"></div>
+                </a>
+                <ul class="sidebar-menu sidebar-menu-dropdown-content">
+                    <li>
+                        <a href="#">
+                            Subjects List
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Subjects Add
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Subjects Edit
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a href="#">
+                    <i class="las la-book"></i>
+                    <span>Library</span>
+                </a>
+            </li>
+
+            <li class="sidebar-submenu">
+                <a href="#" class="sidebar-menu-dropdown">
+                    <i class="las la-shield-alt"></i>
+                    <span>Authentication</span>
+                    <div class="dropdown-icon"></div>
+                </a>
+                <ul class="sidebar-menu sidebar-menu-dropdown-content">
+                    <li>
+                        <a href="#">
+                            Login
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Register
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Forgot Password
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="sidebar-submenu">
+                <a href="#" class="sidebar-menu-dropdown">
+                    <i class='bx bx-cog'></i>
+                    <span>settings</span>
+                    <div class="dropdown-icon"></div>
+                </a>
+                <ul class="sidebar-menu sidebar-menu-dropdown-content">
+                    <li>
+                        <a href="#" class="darkmode-toggle" id="darkmode-toggle">
+                            darkmode
+                            <span class="darkmode-switch"></span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+       <!-- END SIDEBAR MENU -->
+
+      <!-- main content -->
+    <div class="main">
+        <div class="main-header">
+            <div class="mobile-toggle" id="mobile-toggle">
+             <i class="bx bx-menu-alt-right"></i>
+            </div>
+            <div class="main-title">
+                dashboard
+            </div>
+        </div>
+
+        <div class="main-content">
+            {{#block "main"}}
+
+            {{/block}}
+        </div>
+    </div>
+    <!-- END MAIN CONTENT -->
+
+    <div class="overlay"></div>
+    <!-- END main content -->
+    <!-- script -->
+    <!-- Charts -->
+    {{#block "footer"}}
+
+    {{/block}}
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    <!-- admin JS -->
+    <script src="./js/admin.js"></script>
+</body>
+</html>
