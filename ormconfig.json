@@ -1,9 +1,9 @@
 {
     "type": "mysql",
-    "host": "localhost",
+    "host": "103.56.158.249",
     "port": 3306,
-    "username": "root",
-    "password": "",
+    "username": "anna",
+    "password": "Anhkozmo123@",
     "database": "ASM2_APP",
     "entities": [
         "dist/**/*.entity.{js,ts}"
