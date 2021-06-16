@@ -1,7 +1,5 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Category } from "./category.entity";
-
-
 @Entity()
 export class Course {
 
@@ -16,7 +14,7 @@ export class Course {
 
     @ManyToOne(type => Category)
     @JoinColumn({name: "category_id"})
-    category: Category
+    category:Category
 
     @Column()
     category_id: number

@@ -6,53 +6,44 @@
     <!-- ORDERS TABLE -->
     <div class="box">
         <div class="box-header">
-            Students List
+            Subject List
         </div>
         <div class="box-body overflow-scroll">
             <table>
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Students Name</th>
-                        <th>BoD</th>
-                        <th>Email</th>
-                        <th>Phone</th>
-                        <th>Address</th>
-                        <th>Action</th>
+                        <th>Subject Name</th>
+                        <th>Subject Description</th>
                     </tr>
                 </thead>
                 <tbody>
+                    {{#each subjects}}
+
                     <tr>
-                        <td>GCH18833</td>
+                        <td>{{id}}</td>
                         <td>
                             <div class="name-owner">
-                                <span>Hoang van Tng</span>
+                                <span> {{ sub_name}}</span>
                             </div>
                         </td>
-                        <td>17/11/2000</td>
                         <td>
                             <span class="slot name-shipped">
-                                tunghvgch18833@fpt.edu.vn
+                                {{sub_description}}
                             </span>
                         </td>
-                        <td>
-                            <div class="teach-status teach-paid">
-                                <div class="dot"></div>
-                                <span>0315446787</span>
-                            </div>
-                        </td>
-                        <td>Ha Noi</td>
                         <td class="text-right">
                             <div class="actions">
-                                <a href="./StudentsEdit.html">
+                                <a href="/subject/update">
                                     <i class='bx bxs-edit'></i>
                                 </a>
-                                <a href="#">
+                                <a href="/subject/delete?id={{id}}">
                                     <i class='bx bxs-trash'></i>
                                 </a>
                             </div>
                         </td>
                     </tr>
+                    {{/each}}
                 </tbody>
             </table>
         </div>

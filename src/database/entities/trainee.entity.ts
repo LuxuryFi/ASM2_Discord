@@ -23,7 +23,4 @@ export class Trainee {
 
     @Column()
     role_id : string
-
-
-
 }

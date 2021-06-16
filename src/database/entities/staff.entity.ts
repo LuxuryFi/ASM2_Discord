@@ -22,8 +22,5 @@ export class Staff {
     password: string
 
     @Column()
-    role_id : string
-
-
-
+    role_id: string
 }
