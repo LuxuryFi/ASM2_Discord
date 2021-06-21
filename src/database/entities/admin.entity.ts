@@ -24,6 +24,4 @@ export class Admin {
     @Column()
     role_id : string
 
-
-
 }
