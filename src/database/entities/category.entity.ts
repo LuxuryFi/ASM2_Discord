@@ -8,5 +8,8 @@ export class Category {
     id: number
 
     @Column()
+    category_name : string
+
+    @Column()
     category_description : string
 }

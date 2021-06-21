@@ -1,0 +1,179 @@
+{{#extend "layout"}}
+
+   {{#content "header" append="prepend"}}
+        <link rel="stylesheet" href="/css/students.css">
+
+    {{/content}}
+
+{{#content "main" append="prepend"}}
+    <div class="main-header">
+            <div class="mobile-toggle" id="mobile-toggle">
+             <i class="bx bx-menu-alt-right"></i>
+            </div>
+            <div class="main-title">
+                Edit Students
+            </div>
+        </div>
+
+        <div class="col-12" style="margin-top: 15px;">
+            <!--  TABLE -->
+            <div class="box">
+                <div class="box-header">
+                    Basic Information
+                </div>
+                <div class="box-body overflow-scroll">
+                    <div class="row">
+						<div class="col-sm-12">
+								<div class="card-body">
+									<form>
+										<div class="row">
+											<div class="col-12 col-sm-6">
+												<div class="form-group">
+                                                    <div class="form-line">
+                                                        <label>Name</label>
+                                                        <input type="text" name="name" value="{{trainee.name}}" class="form-control">
+                                                    </div>
+												</div>
+											</div>
+											<div class="col-12 col-sm-6">
+												<div class="form-group">
+                                                    <div class="form-line">
+                                                        <label>Student Id</label>
+                                                        <input type="text" name="id" value="{{trainee.id}}" class="form-control">
+                                                    </div>
+												</div>
+											</div>
+											<div class="col-12 col-sm-6">
+												<div class="form-group">
+                                                    <div class="form-line">
+                                                        <label>Gender</label>
+                                                        <select class="form-control">
+                                                            <option>Select Gender</option>
+                                                            <option>Female</option>
+                                                            <option>Male</option>
+                                                            <option>Others</option>
+                                                          </select>
+                                                    </div>
+												</div>
+											</div>
+											<div class="col-12 col-sm-6">
+												<div class="form-group">
+                                                    <div class="form-line">
+                                                        <label>Date of Birth</label>
+                                                        <div>
+                                                            <input type="date" class="form-control">
+                                                        </div>
+                                                    </div>
+												</div>
+											</div>
+											<div class="col-12 col-sm-6">
+												<div class="form-group">
+                                                    <div class="form-line">
+                                                        <label>Class</label>
+                                                        <input type="text" class="form-control">
+                                                    </div>
+												</div>
+											</div>
+                                            <div class="col-12 col-sm-6">
+												<div class="form-group">
+                                                    <div class="form-line">
+                                                        <label>Password</label>
+                                                        <input type="text" name="password" value="{{trainee.password}}" class="form-control">
+                                                    </div>
+												</div>
+											</div>
+											<div class="col-12 col-sm-6">
+												<div class="form-group">
+                                                    <div class="form-line">
+                                                        <label>Joining Date</label>
+                                                        <div>
+                                                            <input type="date" class="form-control">
+                                                        </div>
+                                                    </div>
+												</div>
+											</div>
+											<div class="col-12 col-sm-6">
+												<div class="form-group">
+                                                    <div class="form-line">
+                                                        <label>Mobile Number</label>
+                                                        <input type="text" name="phone"  value="{{trainee.phone}}" class="form-control">
+                                                    </div>
+												</div>
+											</div>
+                                            <div class="col-12 col-sm-6">
+												<div class="form-group">
+													<div class="form-line">
+                                                    <label>Email</label>
+													<input type="email" value="{{trainee.phone}}" name="email" class="form-control">
+                                                    </div>
+												</div>
+											</div>
+											<div class="col-12 col-sm-6">
+												<div class="form-group">
+													<div class="form-line">
+                                                        <label>Student Image</label>
+													<input type="file" class="form-control">
+                                                    </div>
+                                                    <div class="form-line">
+                                                         <img src="/uploads/trainees/{{trainee.avatar}}" alt="" width="300px">
+                                                    </div>
+												</div>
+											</div>
+
+											<div class="col-12">
+												<button type="submit" class="btn btn-primary">Submit</button>
+											</div>
+										</div>
+									</form>
+								</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+            <div class="box-second" style="margin-top: 15px;">
+                <div class="box-header">
+                    Account Information
+                </div>
+                <div class="box-body overflow-scroll">
+                    <div class="row clearfix">
+                        <div class="col-6 col-md-12">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" placeholder="Email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-12">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" placeholder="Phone">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-12">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" placeholder="Password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-12">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" placeholder="Confirm Password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn btn-primary ">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END ORDERS TABLE -->
+        </div>
+{{/content}}
+
+{{/extend}}

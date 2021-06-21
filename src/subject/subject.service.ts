@@ -11,7 +11,6 @@ export class SubjectService {
     async createOne(createSubject : CreateSubjectDto)  {
         let subject = await this.subjectRepository.create(createSubject);
         this.subjectRepository.save(subject);
-
         // INSERT INTO SUBJECT (name,description) VALUES ('anluon', 'ratlaluonnhe')
     }
 

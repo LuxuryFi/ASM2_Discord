@@ -1,0 +1,181 @@
+{{#extend "layout"}}
+
+
+    {{#content "header" append="prepend"}}
+        <link rel="stylesheet" href="/css/students.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    {{/content}}
+
+{{#content "main" append="prepend"}}
+<div class="main-header">
+    <div class="mobile-toggle" id="mobile-toggle">
+        <i class="bx bx-menu-alt-right"></i>
+    </div>
+    <div class="main-title">
+        Add Students
+    </div>
+</div>
+
+<div class="col-12" style="margin-top: 15px;">
+    <!--  TABLE -->
+    <div class="box">
+        <div class="box-header">
+            Basic Information
+        </div>
+        <div class="box-body overflow-scroll">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-body">
+                        <form method="POST" action="/trainee/create" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <label>Name</label>
+                                            <input type="text" name="name" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <label>Gender</label>
+                                            <select class="form-control">
+                                                <option>Select Gender</option>
+                                                <option>Female</option>
+                                                <option>Male</option>
+                                                <option>Others</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <label>Date of Birth</label>
+                                            <div>
+                                                <input type="date" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <label>Class</label>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <label>Password</label>
+                                            <input type="text" name="password" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <label>Joining Date</label>
+                                            <div>
+                                                <input type="date" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <label>Mobile Number</label>
+                                            <input type="text" name="phone" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <label>Address</label>
+                                            <textarea class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <label>Email</label>
+                                            <input type="email" name="email" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <label>Student Image</label>
+                                            <input type="file" id="avatar" name="avatar" class="form-control">
+                                        </div>
+                                        <div class="form-line">
+                                            <img src="#" id="previewImage" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-second" style="margin-top: 15px;">
+        <div class="box-header">
+            Account Information
+        </div>
+        <div class="box-body overflow-scroll">
+            <div class="row clearfix">
+                <div class="col-6 col-md-12">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" class="form-control" placeholder="Email">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-12">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" name="phone" class="form-control" placeholder="Phone">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-12">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="password" placeholder="Password">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-12">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" class="form-control" placeholder="Confirm Password">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <button type="submit" class="btn btn-primary ">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END ORDERS TABLE -->
+</div>
+{{/content}}
+
+{{/extend}}

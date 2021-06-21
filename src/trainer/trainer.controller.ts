@@ -10,14 +10,14 @@ export class TrainerController {
     constructor(private readonly trainerService:
         TrainerService){}
 
-    @Render ('trainer/index.hbs')
+    @Render ('trainers/index.hbs')
     @Get('index')
     async index (@Request() req) {
         let trainer = await this.trainerService.findAll();
         return {trainer: trainer}
     }
 
-    @Render('subjects/create.hbs')
+    @Render('trainers/create.hbs')
     @Get('create')
     async create () {}
 
@@ -36,7 +36,7 @@ export class TrainerController {
         }
     }
 
-    @Render('trainer/update.hbs')
+    @Render('trainers/update.hbs')
     @Get('update')
     async update (@Req() req, @Query() query) {
         let trainer = this.trainerService.findOne(query.id);
@@ -62,7 +62,7 @@ export class TrainerController {
         res.status(302).redirect('/trainer/index')
     }
 
-    @Render('trainer/detail.hbs')
+    @Render('trainers/view.hbs')
     @Get('detail')
     async detail (@Req() req, @Query() query) {
         let trainer = this.trainerService.findOne(query.id);

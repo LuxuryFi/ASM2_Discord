@@ -1,0 +1,221 @@
+
+{{#extend "layout"}}
+
+{{#content "header" mode="prepend"}}
+
+    <link rel="stylesheet" href="/css/students.css">
+     <style>
+        .col-md-12 {
+            position: relative;
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        .about-info ul li {
+            font-size: 18px;
+            margin: 0px 0px 15px 10px;
+            display: flex;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        .title-span {
+            font-weight: 700;
+            width: 180px;
+        }
+        .about-info img {
+            width: 320px;
+            border-radius: 12px ;
+        }
+        .media-body{
+            flex: 1;
+        }
+        .media {
+            display: flex;
+            align-items: flex-start;
+        }
+        .mt-3{
+            margin-top: 1rem !important;
+        }
+        .mr-3 {
+            margin-right: 1rem !important ;
+        }
+
+        @media (min-width: 768px){
+            .col-md-12 {
+                -ms-flex: 0 0 100%;
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+
+    </style>
+{{/content}}
+
+
+{{#content "main" mode="prepend"}}
+     <div class="main-header">
+            <div class="mobile-toggle" id="mobile-toggle">
+             <i class="bx bx-menu-alt-right"></i>
+            </div>
+            <div class="main-title">
+                Student Profile
+            </div>
+        </div>
+
+        <div class="col-12" style="margin-top: 15px;">
+            <!--  TABLE -->
+            <div class="box">
+                <div class="box-header">
+                    Basic Information
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="about-info">
+                            <h4>About me</h4>
+                            <div class="media mt-3">
+                                <img src="/img/user.jpg" alt="" class="mr-3">
+                                <div class="media-body">
+                                    <ul>
+                                        <li>
+                                            <span class="title-span">Full Name: </span>
+                                            <span class="info-span">Hoang Tung</span>
+                                        </li>
+                                        <li>
+                                            <span class="title-span">Gender: </span>
+                                            <span class="info-span">Male</span>
+                                        </li>
+                                        <li>
+                                            <span class="title-span">DOB: </span>
+                                            <span class="info-span">17/11/1998</span>
+                                        </li>
+                                        <li>
+                                            <span class="title-span">Roll ID: </span>
+                                            <span class="info-span">GCH18833</span>
+                                        </li>
+                                        <li>
+                                            <span class="title-span">Class: </span>
+                                            <span class="info-span">GCH0801</span>
+                                        </li>
+                                        <li>
+                                            <span class="title-span">Email: </span>
+                                            <span class="info-span">tunghvgch18833@fpt.edu.vn</span>
+                                        </li>
+                                        <li>
+                                            <span class="title-span">Major: </span>
+                                            <span class="info-span">Web Design</span>
+                                        </li>
+                                        <li>
+                                            <span class="title-span">Phone Number: </span>
+                                            <span class="info-span">0376615839</span>
+                                        </li>
+                                        <li>
+                                            <span class="title-span">Address: </span>
+                                            <span class="info-span">Ha Noi</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                <p>HI Im Hoafng Tung dasdhjasgdasd adsdddddddddddddddddasdasdasfassuaduayuistasdtdtdasudiaduasyddddddddddddddddddddddddddddddddddddddddd</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="box-second" style="margin-top: 15px;">
+                <div class="box-header">
+                    Account Information
+                </div>
+
+                <div class="box-body overflow-scroll">
+                    <div class="row clearfix">
+                        <div class="col-6 col-md-12">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" placeholder="Email">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-12">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" placeholder="Phone">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-12">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" placeholder="Password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-12">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" placeholder="Confirm Password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn btn-primary ">Submit</button>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- END TABLE -->
+            </div>
+
+            <div class="box-third" style="margin-top: 15px;">
+                <div class="box-header">
+                 Social Media Info
+                </div>
+                <div class="box-body overflow-scroll">
+                    <div class="row clearfix">
+                        <div class="col-6 col-md-12">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" placeholder="Facebook">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-12">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" placeholder="Instagram">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-12">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" placeholder="Youtube">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-12">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="text" class="form-control" placeholder="Website ">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <button type="submit" class="btn btn-primary ">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+         </div>
+{{/content}}
+
+{{/extend}}

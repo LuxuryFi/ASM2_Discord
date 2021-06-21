@@ -1,9 +1,24 @@
 {{#extend "layout"}}
 
-{{#content "main" mode="append"}}
+{{#content "header" append="prepend"}}
+<link rel="stylesheet" href="/css/students.css">
+
+{{/content}}
+
+
+
+{{#content "main" mode="prepend"}}
+<div class="main-header">
+    <div class="mobile-toggle" id="mobile-toggle">
+        <i class="bx bx-menu-alt-right"></i>
+    </div>
+    <div class="main-title">
+        Students List
+    </div>
+</div>
 
 <div class="col-12" style="margin-top: 15px;">
-    <!-- ORDERS TABLE -->
+    <!--  TABLE -->
     <div class="box">
         <div class="box-header">
             Students List
@@ -22,45 +37,53 @@
                     </tr>
                 </thead>
                 <tbody>
+
+                    {{#each trainees}}
                     <tr>
-                        <td>GCH18833</td>
+                        <td>{{id}}</td>
                         <td>
                             <div class="name-owner">
-                                <span>Hoang van Tng</span>
+                                <span>{{name}}</span>
                             </div>
                         </td>
                         <td>17/11/2000</td>
                         <td>
                             <span class="slot name-shipped">
-                                tunghvgch18833@fpt.edu.vn
+                                {{email}}
                             </span>
                         </td>
                         <td>
                             <div class="teach-status teach-paid">
                                 <div class="dot"></div>
-                                <span>0315446787</span>
+                                <span>{{phone}}</span>
                             </div>
                         </td>
-                        <td>Ha Noi</td>
+                        <td>{{address}}</td>
                         <td class="text-right">
                             <div class="actions">
-                                <a href="./StudentsEdit.html">
+                                <a href="/trainee/detail?id={{id}}">
+                                    <i class='las la-eye'></i>
+                                </a>
+                                <a href="/trainee/update?id={{id}}">
                                     <i class='bx bxs-edit'></i>
                                 </a>
-                                <a href="#">
+                                <a href="/trainee/delete?id={{id}}">
                                     <i class='bx bxs-trash'></i>
                                 </a>
+
                             </div>
                         </td>
                     </tr>
+                    {{/each}}
+
+
+
                 </tbody>
             </table>
         </div>
     </div>
-    <!-- END ORDERS TABLE -->
+    <!-- END  TABLE -->
+</div>
+{{/content}}
 
-
-
-    {{/content}}
-
-    {{/extend}}
+{{/extend}}

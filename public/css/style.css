@@ -8,7 +8,7 @@
     --menu-item-active-bg: rgba(62, 121, 247, 0.1);
 
     --box-border-radius: 15px;
-    --sidebar-size: 300px;
+    --sidebar-size: 240px;
     --sidebar-logo-img-size: 45px;
     --sidebar-logo-size: 80px;
     --profile-image-size: 45px;
@@ -16,7 +16,9 @@
     --shadow: 0 1px 4px -1px rgb(0 0 0 / 15%);
     --darkmode-toggle-size: 20px;
 }
-
+html {
+    scroll-behavior: smooth;
+}
 .dark {
     --body-bg: #1a191f;
     --box-bg: #1a191f;
@@ -28,6 +30,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Poppins',sans-serif;
 }
 
 body {
@@ -114,11 +117,11 @@ a {
 }
 
 .btn i {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
 }
 
 .btn-outline {
-    border: 2px solid var(--main-color);
+    border: 1.5px solid var(--main-color);
     transition: background-color 0.2s ease-in-out;
 }
 
@@ -157,6 +160,25 @@ a {
 .sidebar-menu > li > a > i {
     font-size: 1.5rem;
     margin-right: 10px;
+}
+
+.sidebar > ul > li > a > input {
+    top: 0;
+    left: 0;
+    padding-left: 20px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    background-color: var(--main-header-height);
+    font-size: 19px;
+    height: 100%;
+    width: 100%;
+}
+
+.sidebar > ul > li > a > .bx-search {
+    z-index: 99;
+    color: #333;
+    font-size: 22px;
 }
 
 .sidebar-menu-dropdown {
@@ -269,6 +291,7 @@ a {
     padding:20px;
     background-color: var(--box-bg);
     box-shadow: var(--shadow);
+
 }
 
 .dark .main-header {
@@ -282,13 +305,14 @@ a {
 .main-title {
     text-transform: capitalize;
     font-size: 1.5rem;
+
 }
 
 .main-content {
     padding: 20px;
 }
 
-.box {
+.box,  .box-second, .box-third {
     background-color: var(--box-bg);
     padding: 20px;
     border: .5px solid var(--border-color);
@@ -393,7 +417,7 @@ table {
     font-weight: 500;
 }
 
-.order-owner img {
+.name-owner img {
     width: 45px;
     height: 45px;
     border-radius: 50%;

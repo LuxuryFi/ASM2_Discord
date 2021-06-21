@@ -21,6 +21,6 @@ export class Trainee {
     @Column()
     password: string
 
-    @Column()
+    @Column({default: 'trainee'})
     role_id : string
 }

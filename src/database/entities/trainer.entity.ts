@@ -21,7 +21,7 @@ export class Trainer {
     @Column()
     password: string
 
-    @Column()
+    @Column({default:'trainer'})
     role_id : string
 
 

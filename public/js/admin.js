@@ -9,7 +9,7 @@ document.querySelectorAll('.sidebar-submenu').forEach(e => {
         let active_height = dropdown_content_lis[0].clientHeight * dropdown_content_lis.length
 
         dropdown_content.classList.toggle('active')
-        
+
         dropdown_content.style.height = dropdown_content.classList.contains('active') ? active_height + 'px' : '0'
     }
 })
@@ -65,7 +65,7 @@ setDarkChart = (dark) => {
 
     customer_chart.updateOptions(theme)
     category_chart.updateOptions(theme)
-} 
+}
 
 
 // Darak mode toggle

@@ -21,7 +21,7 @@ export class Admin {
     @Column()
     password: string
 
-    @Column()
+    @Column({default:'admin'})
     role_id : string
 
 }
