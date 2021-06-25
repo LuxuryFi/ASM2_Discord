@@ -10,7 +10,7 @@ export class TrainerService {
 
     async createOne(createTrainer : CreateTrainerDto)  {
         let trainer = await this.trainerRepository.create(createTrainer);
-        this.trainerRepository.save(trainer);
+        await this.trainerRepository.save(trainer);
 
     }
 

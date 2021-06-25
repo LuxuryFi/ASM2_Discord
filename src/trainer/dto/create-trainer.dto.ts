@@ -14,3 +14,6 @@ export class CreateTrainerDto
 
     role_id: string;
 }
+
+
+// di an deyyy

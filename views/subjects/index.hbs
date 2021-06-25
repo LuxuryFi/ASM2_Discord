@@ -14,7 +14,10 @@
                     <tr>
                         <th>ID</th>
                         <th>Subject Name</th>
+                        <th>Subject Code</th>
                         <th>Subject Description</th>
+                        <th>Subject Credit</th>
+                        <th>Subject Slot</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,9 +30,24 @@
                                 <span> {{ sub_name}}</span>
                             </div>
                         </td>
+                          <td>
+                            <span class="slot name-shipped">
+                                {{sub_code}}
+                            </span>
+                        </td>
                         <td>
                             <span class="slot name-shipped">
                                 {{sub_description}}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="slot name-shipped">
+                                {{credit}}
+                            </span>
+                        </td>
+                          <td>
+                            <span class="slot name-shipped">
+                                {{slot}}
                             </span>
                         </td>
                         <td class="text-right">

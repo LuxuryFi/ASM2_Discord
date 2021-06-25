@@ -24,3 +24,6 @@ export class Trainee {
     @Column({default: 'trainee'})
     role_id : string
 }
+
+
+//di an com da

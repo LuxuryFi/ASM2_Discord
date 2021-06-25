@@ -33,6 +33,7 @@
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Address</th>
+                        <th>Avatar</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -59,6 +60,11 @@
                             </div>
                         </td>
                         <td>{{address}}</td>
+                          <td>
+                            <div class="teach-status teach-paid">
+                                <img width="150px" src="/uploads/trainees/{{avatar}}" alt="">
+                            </div>
+                        </td>
                         <td class="text-right">
                             <div class="actions">
                                 <a href="/trainee/detail?id={{id}}">
@@ -75,9 +81,6 @@
                         </td>
                     </tr>
                     {{/each}}
-
-
-
                 </tbody>
             </table>
         </div>

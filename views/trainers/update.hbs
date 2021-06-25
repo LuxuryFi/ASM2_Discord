@@ -27,21 +27,13 @@
                     <div class="row">
 						<div class="col-sm-12">
 								<div class="card-body">
-									<form>
+									<form method="POST" action="/trainer/update" enctype="multipart/form-data">
 										<div class="row">
 											<div class="col-12 col-sm-6">
 												<div class="form-group">
 													<div class="form-line">
-                                                    <label>First Name</label>
-													<input type="text" class="form-control">
-                                                    </div>
-												</div>
-											</div>
-											<div class="col-12 col-sm-6">
-												<div class="form-group">
-                                                    <div class="form-line">
-                                                        <label>Last Name</label>
-                                                        <input type="text" class="form-control">
+                                                    <label>Name</label>
+													<input type="text" name="name" value="{{trainer.name}}" class="form-control">
                                                     </div>
 												</div>
 											</div>
@@ -49,7 +41,7 @@
 												<div class="form-group">
                                                     <div class="form-line">
                                                         <label>Teacher Id</label>
-                                                        <input type="text" class="form-control">
+                                                        <input type="text" name="id" value="{{trainer.id}}"class="form-control">
                                                     </div>
 												</div>
 											</div>
@@ -63,24 +55,6 @@
                                                             <option>Male</option>
                                                             <option>Others</option>
                                                           </select>
-                                                    </div>
-												</div>
-											</div>
-											<div class="col-12 col-sm-6">
-												<div class="form-group">
-                                                    <div class="form-line">
-                                                        <label>Date of Birth</label>
-                                                        <div>
-                                                            <input type="date" class="form-control">
-                                                        </div>
-                                                    </div>
-												</div>
-											</div>
-											<div class="col-12 col-sm-6">
-												<div class="form-group">
-                                                    <div class="form-line">
-                                                        <label>Class</label>
-                                                        <input type="text" class="form-control">
                                                     </div>
 												</div>
 											</div>
@@ -106,15 +80,15 @@
 												<div class="form-group">
                                                     <div class="form-line">
                                                         <label>Mobile Number</label>
-                                                        <input type="text" class="form-control">
+                                                        <input type="text" name="phone" value="{{trainer.phone}}" class="form-control">
                                                     </div>
 												</div>
 											</div>
                                             <div class="col-12 col-sm-6">
 												<div class="form-group">
                                                     <div class="form-line">
-                                                        <label>Address</label>
-                                                        <textarea class="form-control"></textarea>
+                                                        <label>Password</label>
+                                                        <textarea class="form-control" name="password" >{{trainer.password}}</textarea>
                                                     </div>
 												</div>
 											</div>
@@ -122,7 +96,7 @@
 												<div class="form-group">
 													<div class="form-line">
                                                     <label>Email</label>
-													<input type="email" class="form-control">
+													<input type="email" name="email" value="{{trainer.email}}" class="form-control">
                                                     </div>
 												</div>
 											</div>
@@ -130,7 +104,11 @@
 												<div class="form-group">
 													<div class="form-line">
                                                         <label>Teacher Image</label>
-													<input type="file" class="form-control">
+													<input type="file" name="avatar" class="form-control">
+                                                    </div>
+                                                    <div class="form-line">
+                                                        <img src="/uploads/trainers/{{trainer.avatar}}" width="200px" alt="">
+                                                         <input type="hidden" name="old_image" value="{{trainer.avatar}}">
                                                     </div>
 												</div>
 											</div>
@@ -141,7 +119,6 @@
 										</div>
 									</form>
 								</div>
-
 						</div>
 					</div>
 				</div>

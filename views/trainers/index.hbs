@@ -30,180 +30,49 @@
                                 <th>Email</th>
                                 <th>Phone</th>
                                 <th>Address</th>
+                                <th>Avatar</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                            {{#each trainers}}
                             <tr>
-                                <td>GCH18833</td>
+                                <td>{{id}}</td>
                                 <td>
                                     <div class="name-owner">
-                                        <span>Hoang van Tng</span>
+                                        <span>{{name}}</span>
                                     </div>
                                 </td>
                                 <td>17/11/2000</td>
                                 <td>
                                     <span class="slot name-shipped">
-                                        tunghvgch18833@fpt.edu.vn
+                                        {{email}}
                                     </span>
                                 </td>
                                 <td>
                                     <div class="teach-status teach-paid">
                                         <div class="dot"></div>
-                                        <span>0315446787</span>
+                                        <span>{{phone}}</span>
                                     </div>
                                 </td>
                                 <td>Ha Noi</td>
+                                <td>
+                                    <img src="/uploads/trainers/{{avatar}}" width="150px" alt="">
+                                </td>
                                 <td class="text-right">
                                     <div class="actions">
-                                        <a href="#">
+                                        <a href="/trainer/detail?id={{id}}">
                                             <i class='las la-eye' ></i>
                                         </a>
-                                        <a href="TeacherEdit.html">
+                                        <a href="/trainer/update?id={{id}}">
                                             <i class='bx bxs-edit'></i>
                                         </a>
-                                        <a href="#">
+                                        <a href="/trainer/delete?id={{id}}">
                                             <i class='bx bxs-trash' ></i>
                                         </a>
                                     </div>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td>GCH18844</td>
-                                <td>
-                                    <div class="name-owner">
-                                        <span>Hoang Van TUng</span>
-                                    </div>
-                                </td>
-                                <td>17/11/2000</td>
-                                <td>
-                                    <span class="slot name-shipped">
-                                        tunghvgch18833@fpt.edu.vn
-                                    </span>
-                                </td>
-                                <td>
-                                    <div class="teach-status teach-paid">
-                                        <div class="dot"></div>
-                                        <span>0315446787</span>
-                                    </div>
-                                </td>
-                                <td>Ha Noi</td>
-                                <td class="text-right">
-                                    <div class="actions">
-                                        <a href="#">
-                                            <i class='las la-eye' ></i>
-                                        </a>
-                                        <a href="TeacherEdit.html">
-                                            <i class='bx bxs-edit'></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class='bx bxs-trash' ></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>GCH18844</td>
-                                <td>
-                                    <div class="name-owner">
-                                        <span>Hoang Van Tung</span>
-                                    </div>
-                                </td>
-                                <td>17/11/2000</td>
-                                <td>
-                                    <span class="slot name-shipped">
-                                        tunghvgch18833@fpt.edu.vn
-                                    </span>
-                                </td>
-                                <td>
-                                    <div class="teach-status teach-paid">
-                                        <div class="dot"></div>
-                                        <span>0315446787</span>
-                                    </div>
-                                </td>
-                                <td>Ha Noi</td>
-                                <td class="text-right">
-                                    <div class="actions">
-                                        <a href="#">
-                                            <i class='las la-eye' ></i>
-                                        </a>
-                                        <a href="TeacherEdit.html">
-                                            <i class='bx bxs-edit'></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class='bx bxs-trash' ></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>GCH18844</td>
-                                <td>
-                                    <div class="name-owner">
-                                        <span>Hoang Van Tung</span>
-                                    </div>
-                                </td>
-                                <td>17/11/2000</td>
-                                <td>
-                                    <span class="slot name-shipped">
-                                        tunghvgch18833@fpt.edu.vn
-                                    </span>
-                                </td>
-                                <td>
-                                    <div class="teach-status teach-paid">
-                                        <div class="dot"></div>
-                                        <span>0315446787</span>
-                                    </div>
-                                </td>
-                                <td>Ha Noi</td>
-                                <td class="text-right">
-                                    <div class="actions">
-                                        <a href="#">
-                                            <i class='las la-eye' ></i>
-                                        </a>
-                                        <a href="TeacherEdit.html">
-                                            <i class='bx bxs-edit'></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class='bx bxs-trash' ></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>GCH18844</td>
-                                <td>
-                                    <div class="name-owner">
-                                        <span>Hoang Van Tung</span>
-                                    </div>
-                                </td>
-                                <td>17/11/2000</td>
-                                <td>
-                                    <span class="slot name-shipped">
-                                        tunghvgch18833@fpt.edu.vn
-                                    </span>
-                                </td>
-                                <td>
-                                    <div class="teach-status teach-paid">
-                                        <div class="dot"></div>
-                                        <span>0315446787</span>
-                                    </div>
-                                </td>
-                                <td>Ha Noi</td>
-                                <td class="text-right">
-                                    <div class="actions">
-                                        <a href="#">
-                                            <i class='las la-eye' ></i>
-                                        </a>
-                                        <a href="TeacherEdit.html">
-                                            <i class='bx bxs-edit'></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class='bx bxs-trash' ></i>
-                                        </a>
-                                    </div>
-                                </td>
-                            </tr>
+                                {{/each}}
                         </tbody>
                     </table>
                 </div>

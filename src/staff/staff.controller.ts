@@ -11,7 +11,7 @@ import { ExpressAdapter, FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 
-@Controller('staffs')
+@Controller('staff')
 export class StaffController {
     constructor(private readonly staffService : StaffService){}
 
@@ -48,7 +48,7 @@ export class StaffController {
         try {
             createStaff.avatar = file.filename;
             await this.staffService.createOne(createStaff);
-            res.status(302).redirect('/staffs/index')
+            res.status(302).redirect('/staff/index')
         } catch (error) {
             return {message : 'Create Failed'}
         }
@@ -59,7 +59,7 @@ export class StaffController {
     @Get('delete')
     async deleteOne(@Res() res, @Query() query){
         await this.staffService.deleteOne(query.id);
-        res.status(302).redirect('/staffs/index')
+        res.status(302).redirect('/staff/index')
     }
 
     // @Roles(Role.Admin)
@@ -86,27 +86,28 @@ export class StaffController {
 
     async updateOne(@Body() updateStaff : UpdateStaffDto, @UploadedFile() file: Express.Multer.File, @Req() req,@Res() res, @Query() query){
         try {
-            var avatar = file.filename;
-
+            var avatar = updateStaff.old_image;
+            if (file) {
+                var avatar = file.filename;
+            }
             let old_image = path.join(__dirname, '/../','/../', 'public/uploads/staffs/', updateStaff.old_image )
-
-            if (!avatar) avatar = updateStaff.old_image
-            else {
+            if (file) {
                 if (updateStaff.old_image && fs.existsSync(old_image)){
                     fs.unlinkSync(old_image);
                 }
-                updateStaff.avatar = avatar
             }
+            updateStaff.avatar = avatar
             this.staffService.updateOne(updateStaff);
-            res.status(302).redirect('/staffs/index');
+            res.status(302).redirect('/staff/index');
         } catch (error) {
-
+            console.log("Function: update Staff");
+            console.log(error);
         }
     }
 
     // @Roles(Role.Admin,Role.Staff)
     // @UseGuards(RolesGuard)
-    @Render('staffs/detail.hbs')
+    @Render('staffs/view.hbs')
     @Get('detail')
     async detail(@Req() req,@Res() res, @Query() query){
         let staff = await this.staffService.findOne(query.id);

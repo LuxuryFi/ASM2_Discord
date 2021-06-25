@@ -10,4 +10,13 @@ export class Subject {
 
     @Column({default: "TOPUP AND BTEC"})
     sub_description: string
+
+    @Column()
+    credit: number
+
+    @Column()
+    sub_code: string
+
+    @Column()
+    slot: number
 }
