@@ -6,4 +6,6 @@ export class createCourseDetailDto
 
     trainer_id: number;
 
+    category_id: number
+
 }
