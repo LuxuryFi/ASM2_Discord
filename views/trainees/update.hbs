@@ -25,7 +25,7 @@
                     <div class="row">
 						<div class="col-sm-12">
 								<div class="card-body">
-									<form>
+									<form method="POST" action="/trainee/update" enctype="multipart/form-data">
 										<div class="row">
 											<div class="col-12 col-sm-6">
 												<div class="form-group">
@@ -104,7 +104,7 @@
 												<div class="form-group">
 													<div class="form-line">
                                                     <label>Email</label>
-													<input type="email" value="{{trainee.phone}}" name="email" class="form-control">
+													<input type="email" value="{{trainee.email}}" name="email" class="form-control">
                                                     </div>
 												</div>
 											</div>
@@ -112,9 +112,10 @@
 												<div class="form-group">
 													<div class="form-line">
                                                         <label>Student Image</label>
-													<input type="file" class="form-control">
+													<input type="file" name="avatar" class="form-control">
                                                     </div>
                                                     <div class="form-line">
+                                                        <input type="hidden" name="old_image" value="{{trainee.avatar}}" >
                                                          <img src="/uploads/trainees/{{trainee.avatar}}" alt="" width="300px">
                                                     </div>
 												</div>

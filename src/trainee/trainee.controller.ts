@@ -48,7 +48,11 @@ export class TraineeController {
     }))
     async createOne(@Body() createTrainee: CreateTraineeDto, @UploadedFile() file: Express.Multer.File, @Req() req, @Res() res , @Next() next) {
         try {
-            createTrainee.avatar = file.filename
+            createTrainee.avatar = '';
+
+            if (file.filename) {
+                createTrainee.avatar = file.filename;
+            }
 
             console.log(createTrainee)
 
@@ -94,30 +98,34 @@ export class TraineeController {
     @Post('update')
     @UseInterceptors(FileInterceptor('avatar', {
         storage: diskStorage({
-            destination: path.join(__dirname + '/..' + '/../' + 'public/uploads/trainee/')
+            destination: path.join(__dirname + '/..' + '/../' + 'public/uploads/trainees/')
             , filename: (req, file, cb) => {
                 const randomName = file.originalname
-                cb(null, `${randomName}${extname(file.originalname)}`)
+                cb(null, `${randomName}`)
             }
         })
     }))
     async updateOne(@Body() updateTrainee: UpdateTraineeDto, @UploadedFile() file: Express.Multer.File, @Query() Query, @Res() Res, @Req() req) {
-        const destination = path.join(__dirname + '/..' + '/../' + 'public/upload/trainee', file.originalname);
         try {
-            var avatar = file.filename;
+            var avatar = updateTrainee.old_image;
 
-            let old_image = path.join(__dirname + '/..' + '/../' + 'public/uploads/trainee', updateTrainee.old_image);
-            if (!avatar) avatar = updateTrainee.old_image;
-            else {
+            if (file) {
+                avatar = file.filename
+            }
+
+            let old_image = path.join(__dirname + '/..' + '/../' + 'public/uploads/trainees', updateTrainee.old_image);
+            if (file) {
                 if (updateTrainee.old_image && fs.existsSync(old_image)) {
                     fs.unlinkSync(old_image);
                 }
-                updateTrainee.avatar = avatar;
             }
+            updateTrainee.avatar = avatar;
+
             await this.traineeService.updateOne(updateTrainee);
             Res.status(302).redirect('/trainee/index')
         } catch (error) {
-
+            console.log("Function: updateOneTrainee");
+            console.log(error);
         }
 
     }

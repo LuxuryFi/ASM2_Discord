@@ -1,4 +1,4 @@
-export class updateTrainerDTO
+export class UpdateTrainerDto
 {
     id: number;
 
@@ -13,4 +13,6 @@ export class updateTrainerDTO
     passsword: string;
 
     role_id: string;
+
+    old_image: string;
 }

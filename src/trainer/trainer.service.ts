@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { createTrainerDTO } from './dto/create-trainer.dto';
+import { getConnection, Repository } from 'typeorm';
+import { CreateTrainerDto } from './dto/create-trainer.dto';
 import { Trainer } from '../database/entities/trainer.entity';
-import { updateTrainerDTO } from './dto/update-trainer.dto';
+import { UpdateTrainerDto } from './dto/update-trainer.dto';
 @Injectable()
 export class TrainerService {
     constructor (@InjectRepository(Trainer) private trainerRepository: Repository<Trainer>) {}
 
-    async createOne(createTrainer : createTrainerDTO)  {
+    async createOne(createTrainer : CreateTrainerDto)  {
         let trainer = await this.trainerRepository.create(createTrainer);
         this.trainerRepository.save(trainer);
 
@@ -26,16 +26,36 @@ export class TrainerService {
         await this.trainerRepository.delete(id);
     }
 
-    async updateOne(updateTrainer: updateTrainerDTO) : Promise<void> {
-        let id = updateTrainer.id
-        let name = updateTrainer.name
-        let avatar = updateTrainer.avatar
-        let phone = updateTrainer.phone
-        let email = updateTrainer.email
-        let passsword = updateTrainer.passsword
-        let role_id = updateTrainer.role_id
-    
+    async update(updateTrainer : UpdateTrainerDto) : Promise<void> {
+        await this.trainerRepository.update(
+            {id : updateTrainer.id},
+            {
+                name: updateTrainer.name,
+                phone: updateTrainer.phone,
+                avatar: updateTrainer.avatar,
+                email: updateTrainer.email,
+            }
+        )
+    }
+
+    async findByEmail(username: string, password: string){
+        return await this.trainerRepository.findOne({
+            where: [
+                {password:password},
+                {email:username}
+            ]
+        })
+    }
+
+    async changePassword(username: string, password: string) {
+        return await getConnection()
+        .createQueryBuilder()
+        .update(Trainer)
+        .set({
+            password: password
+        })
+        .where("email = :username", { username: username })
+        .execute();
     }
 
 }
-

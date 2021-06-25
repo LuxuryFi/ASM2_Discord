@@ -1,9 +1,13 @@
-import { Body, Controller, Get , Post, Query, Render, Req, Request, Res} from '@nestjs/common';
+import { Body, Controller, Get , Post, Query, Render, Req, Request, Res, UploadedFile, UseInterceptors} from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { query } from 'express';
-import { createTrainerDTO } from './dto/create-trainer.dto';
-import { updateTrainerDTO } from './dto/update-trainer.dto';
+import { diskStorage } from 'multer';
+import { CreateTrainerDto } from './dto/create-trainer.dto';
+import { UpdateTrainerDto } from './dto/update-trainer.dto';
 import { TrainerService } from './trainer.service';
-
+import * as fs from 'fs'
+import * as path from 'path'
+import { extname } from 'path';
 
 @Controller('trainer')
 export class TrainerController {
@@ -22,17 +26,25 @@ export class TrainerController {
     async create () {}
 
     @Post('create')
-    createOne(@Body() createTrainer : createTrainerDTO, @Res() res)
-    {
-        try
-        {
-            this.trainerService.createOne(createTrainer);
-            res.status(302).redirect('/trainer/index');
-        }
-        catch(error)
-        {
-            console.log('Function: Create one trainee');
-            console.log(error);
+    @UseInterceptors(FileInterceptor('avatar', {
+        storage: diskStorage({
+          destination: path.join(__dirname + '/..' + '/../', 'public/uploads/trainers/')
+          , filename: (req, file, cb) => {
+            // Generating a 32 random chars long string
+            const randomName = Array(32).fill(null).map(() => (Math.round(Math.random() * 16)).toString(16)).join('')
+            //Calling the callback passing the random name generated with the original extension name
+            cb(null, `${randomName}${extname(file.originalname)}`)
+          }
+        })
+      }))
+    async createOne(@Body() createTrainer : CreateTrainerDto, @UploadedFile() file: Express.Multer.File,@Res() res, @Req() req) {
+        try {
+            var avatar = file.filename;
+            createTrainer.avatar = avatar
+            await this.trainerService.createOne(createTrainer);
+            res.status(302).redirect('/trainers/index')
+        } catch (error) {
+            res.status(302).redirect('/trainers/index')
         }
     }
 
@@ -44,15 +56,36 @@ export class TrainerController {
     }
 
     @Post('update')
-    async updateOne(@Body() updateTrainer : updateTrainerDTO, @Res() res) {
-        console.log(updateTrainer)
+    @UseInterceptors(FileInterceptor('avatar', {
+        storage: diskStorage({
+            destination: path.join(__dirname + '/..' + '/../', 'public/uploads/trainers/')
+            , filename: (req, file, cb) => {
+                // Generating a 32 random chars long string
+                const randomName = Array(32).fill(null).map(() => (Math.round(Math.random() * 16)).toString(16)).join('')
+                //Calling the callback passing the random name generated with the original extension name
+                cb(null, `${randomName}${extname(file.originalname)}`)
+            }
+        })
+    }))
+    async updateOne(@Body() updateTrainer: UpdateTrainerDto, @Res() res, @Req() req, @UploadedFile() file: Express.Multer.File) {
+        const destination = path.join(__dirname + '/..' + '/../', 'public/uploads/trainers/', file.originalname);
         try {
-            this.trainerService.updateOne(updateTrainer);
-            res.status(302).redirect('/subject/index')
-        } catch (error) {
-            console.log(error)
-        }
+            var avatar = file.filename;
 
+            let old_image = path.join(__dirname + '/..' + '/../', 'public/uploads/trainers/', updateTrainer.old_image);
+            if (!avatar) avatar = updateTrainer.old_image;
+            else {
+                if (updateTrainer.old_image && fs.existsSync(old_image)) {
+                    fs.unlinkSync(old_image);
+                }
+                updateTrainer.avatar = avatar
+            }
+            await this.trainerService.update(updateTrainer);
+            res.status(302).redirect('/trainers/index')
+
+        } catch (error) {
+            throw error.message;
+        }
     }
 
     @Get('delete')
