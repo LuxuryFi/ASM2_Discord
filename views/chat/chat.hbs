@@ -1,0 +1,49 @@
+{{#extend "../layout"}}
+
+{{#content "main" mode="prepend"}}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+    integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+<script type="text/javascript" src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+{{/content}}
+
+{{#content "main" mode="prepend"}}
+<div class="container">
+    <div class="card my-5">
+        <div class="card-body">
+            <div id="chat"></div>
+        </div>
+        <label for="message" class="h4" style="margin-top: 20px;">Message:</label>
+        <ul id="messages" style="height: 600px; border: solid 1px #cecece;"></ul>
+        <div class="form-group">
+            <textarea id="m" class="form-control" rows="5" placeholder="Enter your message" required></textarea>
+        </div>
+        <button type="submit" id="form-submit" class="btn btn-success btn-lg pull-right ">Submit</button>
+    </div>
+</div>
+
+
+{{/content}}
+
+{{#content "footer"}}
+<script>
+    $(function () {
+        const socket = io('http://localhost:3001');
+
+
+        $('#form-submit').click(function () {
+            socket.broadcast.to(emit('message', $('#m').val());
+            $('#m').val('');
+            console.log('hehe')
+            return false;
+        });
+
+        socket.on('message', function (msg) {
+            $('#messages').append($('<li>').text(msg));
+        });
+    });
+</script>
+{{/content}}
+{{/extend}}

@@ -10,7 +10,7 @@ export class SubjectService {
 
     async createOne(createSubject : CreateSubjectDto)  {
         let subject = await this.subjectRepository.create(createSubject);
-        this.subjectRepository.save(subject);
+        await this.subjectRepository.save(subject);
         // INSERT INTO SUBJECT (name,description) VALUES ('anluon', 'ratlaluonnhe')
     }
 
@@ -29,12 +29,16 @@ export class SubjectService {
     async updateOne(updateSubject: UpdateSubjectDto) : Promise<void> {
         let sub_name =  updateSubject.sub_name
         let sub_description = updateSubject.sub_description
+        let sub_code = updateSubject.sub_code
+        let credit = updateSubject.credit
 
         this.subjectRepository.update(
-            {id: updateSubject.old_id},
+            {id: updateSubject.id},
             {
                 sub_name,
-                sub_description
+                sub_description,
+                sub_code,
+                credit,
             }
         )
     }

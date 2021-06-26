@@ -12,6 +12,7 @@ import { CourseDetailModule } from './course-detail/course-detail.module';
 import { RegistrationModule } from './registration/registration.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { getConnectionOptions } from 'typeorm';
+import { AppGateway } from './app.gateway';
 
 @Module({
   imports: [AdminModule, StaffModule, TraineeModule, TrainerModule, CategoryModule, SubjectModule, CourseModule, CourseDetailModule, RegistrationModule,
@@ -21,6 +22,6 @@ import { getConnectionOptions } from 'typeorm';
     })
   })],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AppGateway],
 })
 export class AppModule {}

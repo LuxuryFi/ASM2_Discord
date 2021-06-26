@@ -16,4 +16,4 @@ export class CreateTrainerDto
 }
 
 
-// di an deyyy
+// di an dey :3

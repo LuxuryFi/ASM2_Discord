@@ -38,7 +38,7 @@ export class SubjectController {
     @Render('subjects/update.hbs')
     @Get('update')
     async update (@Req() req, @Query() query) {
-        let subject = this.subjectService.findOne(query.id);
+        let subject = await this.subjectService.findOne(query.id);
         return { subject : subject}
     }
 

@@ -6,4 +6,8 @@ export class UpdateSubjectDto {
     sub_description: string
 
     old_id: number
+
+    sub_code: string
+
+    credit: number
 }

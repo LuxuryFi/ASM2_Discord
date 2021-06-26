@@ -1,0 +1,8 @@
+.message-box {
+    height: 400px;
+}
+
+.message-list {
+    display: fixed;
+    overflow: scroll;
+}
