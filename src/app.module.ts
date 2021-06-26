@@ -8,7 +8,7 @@ import { TrainerModule } from './trainer/trainer.module';
 import { CategoryModule } from './category/category.module';
 import { SubjectModule } from './subject/subject.module';
 import { CourseModule } from './course/course.module';
-import { CourseDetailModule } from './course-detail/course-detail.module';
+import { CourseDetailModule } from './course_detail/course-detail.module';
 import { RegistrationModule } from './registration/registration.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { getConnectionOptions } from 'typeorm';
