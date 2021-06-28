@@ -26,7 +26,7 @@ export class AppController {
   login(@Req() req, @Res() res, @Next() next) {
     console.log('user',req.user)
     if (req.user.role_id == 'trainee' || req.user.role_id == 'trainer') {
-      res.redirect('/')
+      res.redirect('/user/index')
     }
     else {
       res.redirect('index')

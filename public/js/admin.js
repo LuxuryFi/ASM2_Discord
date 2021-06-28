@@ -9,14 +9,14 @@ document.querySelectorAll('.sidebar-submenu').forEach(e => {
         let active_height = dropdown_content_lis[0].clientHeight * dropdown_content_lis.length
 
         dropdown_content.classList.toggle('active')
-
+        
         dropdown_content.style.height = dropdown_content.classList.contains('active') ? active_height + 'px' : '0'
     }
 })
 
 let category_options = {
     series: [100, 50, 20, 10],
-    labels: ['Students', 'Teacher', 'The Trainee', 'Staff'],
+    labels: ['Students', 'Teacher', 'Admin', 'Staff'],
     chart: {
         type: 'donut',
     },
@@ -65,7 +65,7 @@ setDarkChart = (dark) => {
 
     customer_chart.updateOptions(theme)
     category_chart.updateOptions(theme)
-}
+} 
 
 
 // Darak mode toggle
@@ -90,3 +90,6 @@ document.querySelector('#sidebar-close').onclick = () => {
     sidebar.classList.toggle('active')
     overlay.classList.toggle('active')
 }
+
+
+

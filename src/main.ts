@@ -48,7 +48,7 @@ async function bootstrap() {
 
   hbs.handlebars.registerPartial('layout', hbs.handlebars.compile(fs.readFileSync(join(__dirname, '..', 'views/layouts.hbs'), 'utf-8')));
   hbs.handlebars.registerHelper(layouts(hbs.handlebars));
-  hbs.handlebars.registerPartial('index', hbs.handlebars.compile(fs.readFileSync(join(__dirname, '..', 'views/index.hbs'), 'utf-8')));
+  hbs.handlebars.registerPartial('index', hbs.handlebars.compile(fs.readFileSync(join(__dirname, '..', 'views/users/layout.hbs'), 'utf-8')));
 
   await app.listen(3000 || process.env.PORT);
 }
