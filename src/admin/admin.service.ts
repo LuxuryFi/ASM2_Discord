@@ -15,7 +15,7 @@ export class AdminService {
         return await this.adminRepository.findOne({
             where: [
                 {password:password},
-                {admin_email:username}
+                {email:username}
             ]
         })
     }

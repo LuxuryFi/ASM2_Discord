@@ -13,9 +13,10 @@ import { RegistrationModule } from './registration/registration.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { getConnectionOptions } from 'typeorm';
 import { AppGateway } from './app.gateway';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [AdminModule, StaffModule, TraineeModule, TrainerModule, CategoryModule, SubjectModule, CourseModule, CourseDetailModule, RegistrationModule,
+  imports: [AdminModule,AuthModule, StaffModule, TraineeModule, TrainerModule, CategoryModule, SubjectModule, CourseModule, CourseDetailModule, RegistrationModule,
   TypeOrmModule.forRootAsync({
     useFactory: async () => Object.assign( await getConnectionOptions(), {
       autoLoadEntities: true,

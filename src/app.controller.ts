@@ -1,44 +1,49 @@
-import { Controller, Get, Render } from '@nestjs/common';
+import { Controller, Get, Next, Post, Render, Req, Res, UseGuards } from '@nestjs/common';
 import { AppService } from './app.service';
+import { LoginGuard } from './guards/login.guard';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Render('index.hbs')
+  @Render('auth/login.hbs')
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  async loginin(@Req() req, @Res() res, @Next() next) {
+    console.log(req.user)
+    if (req.user && (req.user.role_id == 'trainee' || req.user.role_id == 'trainer')) {
+      await res.status(200).redirect('/');
+    }
+    if (req.user && (req.user.role_id == 'staff' || req.user.role_id == 'admin')) {
+      await res.status(200).redirect('/index');
+    }
+    else {
+      // next();
+    }
+  }
+
+  @UseGuards(LoginGuard)
+  @Post()
+  login(@Req() req, @Res() res, @Next() next) {
+    console.log('user',req.user)
+    if (req.user.role_id == 'trainee' || req.user.role_id == 'trainer') {
+      res.redirect('/')
+    }
+    else {
+      res.redirect('index')
+    }
   }
 
   @Render('index.hbs')
-  @Get('An')
-  getAn(): string {
-    return null;
-  }
-
-  @Render('trainee/create.hbs')
-  @Get('AnCoHo1')
+  @Get('index')
   getAnCoHo(): string {
     return null;
   }
 
-  @Render('trainee/view.hbs')
-  @Get('AnCoHo2')
-  getAnCoHo2(): string {
-    return null;
-  }
 
-  @Render('trainee/update.hbs')
-  @Get('AnCoHo3')
-  getAnCoHo3(): string {
-    return null;
-  }
-
-  @Render('trainee/index.hbs')
-  @Get('AnCoHo4')
-  getAnCoHo4(): string {
-    return null;
+  @Get('logout')
+  logout(@Req() request, @Res() res){
+    request.logout()
+    res.redirect('/');
   }
 
 }
