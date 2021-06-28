@@ -1,0 +1,57 @@
+{{#extend "layout"}}
+{{#content "main"}}
+<div class="main-header">
+    <div class="mobile-toggle" id="mobile-toggle">
+        <i class="bx bx-menu-alt-right"></i>
+    </div>
+    <div class="main-title">
+        Course Detail
+    </div>
+</div>
+
+<div class="col-12" style="margin-top: 15px;">
+    <!--  TABLE -->
+    <div class="box">
+        <div class="box-header">
+            Course Details list
+        </div>
+        <div class="box-body overflow-scroll">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Course</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {{#each course_details}}
+                    <tr>
+                        <td>
+                            <div class="name-owner">
+                                <a href="/registration/detail?course_id={{course_id}}&subject_id={{subject_id}}&trainer_id={{trainer_id}}"><span> {{course.course_name}} - {{subject.sub_code}} - {{trainer.name}} </span></a>
+                            </div>
+                        </td>
+                        <td class="text-right">
+                            <div class="actions">
+                                <a href="/course-detail/detail?course_id={{course_id}}&subject_id={{subject_id}}&trainer_id={{trainer_id}}">
+                                    <i class='las la-eye'></i>
+                                </a>
+                                <a href="/registration/index?course_id={{course_id}}&subject_id={{subject_id}}&trainer_id={{trainer_id}}">
+                                    <i class='bx bxs-edit'></i>
+                                </a>
+                                <a href="/course-detail/delete?course_id={{course_id}}&subject_id={{subject_id}}&trainer_id={{trainer_id}}">
+                                    <i class='bx bxs-trash'></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- END TABLE -->
+</div>
+{{/content}}
+
+{{/extend}}

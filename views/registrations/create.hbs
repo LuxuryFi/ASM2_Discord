@@ -1,0 +1,73 @@
+{{#extend "layout"}}
+
+{{#content "header" mode="prepend"}}
+<link rel="stylesheet" href="/css/students.css">
+{{/content}}
+
+{{#content "main" mode="prepend"}}
+<div class="main-header">
+    <div class="mobile-toggle" id="mobile-toggle">
+        <i class="bx bx-menu-alt-right"></i>
+    </div>
+    <div class="main-title">
+        Registration
+    </div>
+</div>
+
+<div class="col-12" style="margin-top: 15px;">
+    <!--  TABLE -->
+    <div class="box">
+        <div class="box-header">
+            Add
+        </div>
+        <div class="box-body overflow-scroll">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card-body">
+                        <form method="POST" action="/registration/create">
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <label>Course Detail</label>
+                                        <select name="course_detail_value" class="form-control" class="trainee_id">
+                                            <option>Select </option>
+                                            {{#each coursedetails}}
+                                            <option  value='{"trainer_id":"{{trainer_id}}","course_id":"{{course_id}}","subject_id":"{{subject_id}}"}'>
+                                                {{course.course_name}} - {{subject.sub_name}} - {{trainer.name}}
+                                            </option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <label>Trainee ID</label>
+                                        <select class="form-control" name="trainee_id">
+                                            <option>Select </option>
+                                            {{#each trainees}}
+                                                <option value="{{id}}">{{name}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                    </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- END TABLE -->
+</div>
+
+{{/content}}
+
+{{/extend}}

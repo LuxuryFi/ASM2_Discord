@@ -12,15 +12,14 @@ export class RegistrationController {
         private readonly traineeService: TraineeService
     ){}
 
-    @Render('registration/index.hbs')
+    @Render('registrations/index.hbs')
     @Get('index')
     async index(){
-        let registration =await this.coursedetailService.findAll();
-
-        return {registration: registration}
+        let registration =await this.registrationService.findAll();
+        return {trainees: registration}
     }
 
-    @Render('registration/create.hbs')
+    @Render('registrations/create.hbs')
     @Get('create')
     async create(){
         let coursedetails = await this.coursedetailService.findAll();
@@ -30,11 +29,11 @@ export class RegistrationController {
 
     @Post('create')
     async createOne(@Body() createRegis : createRegisDto, @Res() res){
-       await this.registrationService.create(createRegis);
+        await this.registrationService.create(createRegis);
         res.status(302).redirect('/registration/create')
     }
 
-    @Render('registration/list.hbs')
+    @Render('registrations/index.hbs')
     @Get('detail')
     async detail(@Res()  res, @Query() query){
         let trainees = await this.registrationService.findAllTraineeByCourse(query.course_id,query.subject_id,query.trainer_id);
@@ -43,23 +42,20 @@ export class RegistrationController {
             subject_id: query.subject_id,
             trainer_id: query.trainer_id
         }
-        console.log(trainees)
         return {trainees : trainees, courses: courses}
     }
 
     @Get('delete')
     async delete(@Res() res, @Query() query){
         await this.registrationService.delete(query.course_id,query.subject_id,query.trainer_id,query.trainee_id)
-        res.status(302).redirect('/registration/detail?course_id=' + query.course_id + '&subject_id=' + query.subject_id + '&trainer_id=' +query.trainer_id)
+        res.status(302).redirect('/registration/index')
     }
 
-    @Render('registration/create.hbs')
+    @Render('registrations/create.hbs')
     @Get('add')
     async add(@Query() query){
         let courses = await this.coursedetailService.findMany(query.course_id,query.subject_id,query.trainer_id)
         let trainees = await this.traineeService.findAll();
-        console.log(trainees)
         return  {coursedetails : courses, trainees: trainees}
     }
-
 }

@@ -37,14 +37,6 @@ html {
 	overflow-x: hidden;
 }
 
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus {
-	-webkit-box-shadow: 0 0 0px 1000px white inset !important;
-	box-shadow: 0 0 0px 1000px white inset !important;
-}
-
 .form-group .form-line {
     width: 100%;
     position: relative;
@@ -89,6 +81,7 @@ input:-webkit-autofill:focus {
     box-shadow: none;
     border-radius: 0;
     font-weight: 400;
+    position: relative;
 }
 
 .form-control {
@@ -119,8 +112,10 @@ input[type=text],
 input[type=password] {
 	appearance: none;
 }
+
 textarea.form-control {
 	resize: vertical;
+    outline: none;
 }
 
 .form-group {
@@ -161,3 +156,4 @@ textarea.form-control {
     border-color: #FFBC53;
     color: #fff;
 }
+

@@ -1,4 +1,4 @@
-export class createCourseDto
+export class CreateCourseDto
 {
     id: number;
 

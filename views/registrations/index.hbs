@@ -1,0 +1,133 @@
+{{#extend "layout"}}
+
+
+
+{{#content "header" mode="prepend"}}
+<link rel="stylesheet" href="/css/students.css">
+
+<style>
+    .button {
+        display: inline-flex;
+        height: 40px;
+        padding: 0;
+        background: #009578;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        overflow: hidden;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        margin-top: 5px;
+    }
+
+    .button:hover {
+        background: #008168;
+    }
+
+    .button:active {
+        background: #006e58;
+    }
+
+    .button-text,
+    .button-icon {
+        display: inline-flex;
+        align-items: center;
+        padding: 0 20px;
+        color: #fff;
+        height: 100%;
+    }
+
+    .button-text {
+        font-size: 16px;
+    }
+
+    .button-icon {
+        font-size: 1.5em;
+        background: rgba(0, 0, 0, 0.08);
+    }
+
+</style>
+{{/content}}
+
+{{#content "main" mode="prepend"}}
+<div class="main-header">
+    <div class="mobile-toggle" id="mobile-toggle">
+        <i class="bx bx-menu-alt-right"></i>
+    </div>
+    <div class="main-title">
+        Registration
+    </div>
+</div>
+
+<div class="col-12" style="margin-top: 15px;">
+    <!--  TABLE -->
+    <div class="box">
+        <div class="box-header">
+        </div>
+        <h2>List</h2>
+        <a href="/registration/create">
+            <button type="button" class="button">
+                <span class="button-text">Enroll</span>
+                <span class="button-icon">
+                    <ion-icon name="add-circle-outline"></ion-icon>
+                </span>
+            </button>
+        </a>
+
+        <div class="box-body overflow-scroll">
+            <table>
+                <thead>
+                    <tr>
+                        <th>SubjectID</th>
+                        <th>TeachcerID</th>
+                        <th>CourseID</th>
+                        <th>StudentID</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {{#each trainees}}
+                    <tr>
+                        <td>
+                            <span class="slot name-shipped" class="sub_id">
+                                {{subject.sub_code}}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="slot name-shipped" class="trainee_id">
+                               {{course.course_name}}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="slot name-shipped" class="traner_id">
+                                {{trainer.name}}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="slot name-shipped" class="course_id">
+                                {{trainee.name}}
+                            </span>
+                        </td>
+                        <td class="text-right">
+                            <div class="actions">
+                                <a href="">
+                                    <i class='bx bxs-edit'></i>
+                                </a>
+                                <a href="/registration/delete?course_id={{course.id}}&trainer_id={{trainer.id}}&subject_id={{subject.id}}">
+                                    <i class='bx bxs-trash'></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- END TABLE -->
+</div>
+{{/content}}
+
+{{/extend}}

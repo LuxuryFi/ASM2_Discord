@@ -1,4 +1,4 @@
-export class updateCourseDto
+export class UpdateCourseDto
 {
     id: number;
 

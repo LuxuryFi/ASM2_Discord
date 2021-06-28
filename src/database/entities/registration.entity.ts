@@ -1,4 +1,4 @@
-import { Entity, JoinColumn, ManyToOne, PrimaryColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { Course } from "./course.entity";
 import { CourseDetail } from "./coursedetail.entity";
 import { Trainee } from "./trainee.entity";
@@ -28,7 +28,7 @@ export class Registration {
     course_id: number
 
     @PrimaryColumn()
-    subjectid: number
+    subject_id: number
 
     @PrimaryColumn()
     trainer_id: number

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { getConnection, Repository } from 'typeorm';
 import { CreateStaffDto } from './dto/create-staff.dto';
 import { UpdateStaffDto } from './dto/update-staff.dto';
 import { Staff } from 'src/database/entities/staff.entity';
@@ -40,7 +40,15 @@ export class StaffService {
         } catch (error) {
             console.log(error)
         }
+    }
 
-
+    async findByEmail(username : string, password: string){
+        return await getConnection()
+        .createQueryBuilder()
+        .select('staff')
+        .from(Staff,'staff')
+        .where('staff.email = :email', {email : username})
+        .andWhere('staff.password = :password', {password : password})
+        .getOne()
     }
 }

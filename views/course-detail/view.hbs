@@ -1,0 +1,123 @@
+
+{{#extend "layout"}}
+
+    {{#content "header" mode="prepend"}}
+         <style>
+        .col-md-12 {
+            position: relative;
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        .about-info ul li {
+            font-size: 18px;
+            margin: 0px 0px 15px 10px;
+            display: flex;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        h3 {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .title-span {
+            font-weight: 700;
+            width: 180px;
+        }
+        .about-info img {
+            width: 320px;
+            border-radius: 12px ;
+        }
+        .media-body{
+            flex: 1;
+        }
+        .media {
+            display: flex;
+            align-items: flex-start;
+        }
+        .mt-3{
+            margin-top: 1rem !important;
+        }
+        .mr-3 {
+            margin-right: 1rem !important ;
+        }
+
+        @media (min-width: 768px){
+            .col-md-12 {
+                -ms-flex: 0 0 100%;
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+        }
+
+    </style>
+
+    {{/content}}
+
+
+    {{#content "main" mode="prepend"}}
+                <div class="main-header">
+            <div class="mobile-toggle" id="mobile-toggle">
+             <i class="bx bx-menu-alt-right"></i>
+            </div>
+            <div class="main-title">
+                Course
+            </div>
+        </div>
+
+        <div class="col-12" style="margin-top: 15px;">
+            <!--  TABLE -->
+            <div class="box">
+                <div class="box-header">
+                   Course Detail
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="about-info">
+                            <div class="media mt-3">
+                                <img src="img/edu-survey-landing-image.jpg" alt="" class="mr-3">
+                                <div class="media-body">
+                                    <ul>
+                                        <li>
+                                            <span class="title-span">Course Name: </span>
+                                            <span class="info-span">{{course_detail.course.course_name}}</span>
+                                        </li>
+
+                                        <li>
+                                            <span class="title-span"> Subject </span>
+                                            <span class="info-span"> {{course_detail.subject.id}} - {{course_detail.subject.sub_name}}</span>
+                                        </li>
+                                        <li>
+                                            <span class="title-span">Trainer:   </span>
+                                            <span class="info-span">{{course_detail.trainer.name}} </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div>
+                                <h3>
+                                    About
+                                </h3>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                <p>Open after rule place He earth earth good called days unto which wherein day doesn't said day image signs fish days forth for evening whose his make his bearing years gathering good brought without.
+                                    Years living creepeth. Form them yielding behold greater divided void was fowl earth in. Spirit Bring grass they're you have shall years so morning. Grass gathering won't heaven set greater darkness forth abundantly he.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+         </div>
+    {{/content}}
+
+{{/extend}}

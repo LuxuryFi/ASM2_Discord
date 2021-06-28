@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { AppModule } from './app.module';
-import {join} from 'path';
+import { join } from 'path';
 import * as hbs from 'hbs';
 import * as fs from 'fs';
 import * as layouts from 'handlebars-layouts';
@@ -12,6 +12,25 @@ async function bootstrap() {
   app.useStaticAssets(join(__dirname, '..', '/public'));
   app.setBaseViewsDir(join(__dirname, '..', '/views'));
   app.setViewEngine('hbs');
+
+
+  hbs.handlebars.registerHelper('selected', function (options, value) {
+    if (options == value) {
+      return ' selected';
+    } else {
+      return '';
+    }
+  })
+
+  hbs.handlebars.registerHelper('admin', function (role) {
+    if (role == 'admin') {
+      return 'hidden';
+    } else {
+      return '';
+    }
+  })
+
+
 
   hbs.handlebars.registerPartial('layout', hbs.handlebars.compile(fs.readFileSync(join(__dirname, '..', 'views/layouts.hbs'), 'utf-8')));
   hbs.handlebars.registerHelper(layouts(hbs.handlebars));

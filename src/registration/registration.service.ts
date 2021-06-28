@@ -18,6 +18,8 @@ export class RegistrationService {
         createRegis.trainer_id = result.trainer_id;
         createRegis.subject_id = result.subject_id;
 
+        console.log(result)
+
         let registration = await this.registrationRepository.create(createRegis);
         await this.registrationRepository.save(registration);
     }
@@ -62,7 +64,7 @@ export class RegistrationService {
         .where("trainee.id = :id3", {id3: trainee_id})
         .getMany();
     }
-    
+
 
     async findOne(course_id :number, subject_id:number, trainer_id : number, trainee_id: number){
         return await getConnection().createQueryBuilder().
@@ -84,13 +86,13 @@ export class RegistrationService {
         await getConnection().createQueryBuilder()
         .delete()
         .from(Registration)
-        .andWhere("registration.topic_id = :id2", {id2: subject_id})
+        .andWhere("registration.subject_id = :id2", {id2: subject_id})
         .andWhere("registration.trainer_id = :id3", {id3: trainer_id})
         .andWhere("registration.trainee_id = :id4",{id4: trainee_id})
         .execute()
     }
 
 
-   
-    
+
+
 }

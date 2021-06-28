@@ -1,40 +1,47 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { createCourseDto } from './dto/create-course.dto';
-import { Course } from '../database/entities/course.entity';
-import { updateCourseDto } from './dto/update-course.dto';
+import { Course } from 'src/database/entities/course.entity';
+import { getConnection, Repository } from 'typeorm';
+import { CreateCourseDto } from './dto/create-course.dto';
+import { UpdateCourseDto } from './dto/update-course.dto';
 
 @Injectable()
 export class CourseService {
-    constructor (@InjectRepository(Course) private courseRepository: Repository<Course>) {}
+    constructor(@InjectRepository(Course) private courseRepository: Repository<Course>) { }
 
-    async createOne(createCourse : createCourseDto)  {
-        let course = await this.courseRepository.create(createCourse);
-        this.courseRepository.save(course);
-
+    async createOne(createCourse: CreateCourseDto) {
+        let course = this.courseRepository.create(createCourse);
+        await this.courseRepository.save(course);
     }
 
-    async findOne(id : number) : Promise<Course> {
-        return await this.courseRepository.findOne(id);
+    async findOne(id: number) {
+        return await getConnection().createQueryBuilder()
+        .select(['course','category.category_name'])
+        .from(Course,'course')
+        .innerJoinAndSelect('course.category','category')
+        .where('course.id = :id', {id : id})
+        .getOne()
     }
 
-    async findAll() : Promise<Course[]> {
-        return await this.courseRepository.find();
+    async findAll(): Promise<Course[]> {
+        return await getConnection().createQueryBuilder()
+            .select(['course', 'category.category_name'])
+            .from(Course, 'course')
+            .innerJoinAndSelect("course.category", "category")
+            //.where("course.id = :id, {id=1}")
+            .getMany();
     }
 
-    async deleteOne(id : number) : Promise<void> {
+    async updateOne(updateCourse: UpdateCourseDto) {
+        this.courseRepository.update({ id: updateCourse.id }, {
+            course_name: updateCourse.course_name,
+            course_description: updateCourse.course_description, category_id: updateCourse.category_id
+        })
+    }
+
+    async deleteOne(id: number) {
         await this.courseRepository.delete(id);
     }
 
-    async updateOne(updateCourse: updateCourseDto) : Promise<void> {
-        let id = updateCourse.id
-        let course_name = updateCourse.course_name
-        let course_description = updateCourse.course_description
-        let category_id = updateCourse.category_id
-    
-    }
 
 }
-
-

@@ -27,7 +27,7 @@ export class CourseDetailController {
     @Get('index')
     async index() {
         let course_details = await this.coursedetailService.findAll();
-       return {course_details : course_details}
+        return {course_details : course_details}
     }
 
     //@Roles(Role.Admin,Role.Staff)
@@ -52,11 +52,10 @@ export class CourseDetailController {
 
     //@Roles(Role.Admin,Role.Staff)
     //@UseGuards(RolesGuard)
-    @Render('course-detail/detail.hbs')
+    @Render('course-detail/view.hbs')
     @Get('detail')
     async detail(@Query() query){
         let course_detail = await this.coursedetailService.findOne(query.course_id,query.subject_id,query.trainer_id);
-
         return {course_detail: course_detail}
     }
 
