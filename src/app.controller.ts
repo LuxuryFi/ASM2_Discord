@@ -1,4 +1,4 @@
-import { Controller, Get, Next, Post, Render, Req, Res, UseGuards } from '@nestjs/common';
+import { Controller, Request, Get, Next, Post, Render, Req, Res, UseGuards } from '@nestjs/common';
 import { AppService } from './app.service';
 import { LoginGuard } from './guards/login.guard';
 
@@ -35,8 +35,9 @@ export class AppController {
 
   @Render('index.hbs')
   @Get('index')
-  getAnCoHo(): string {
-    return null;
+  getAnCoHo(@Request() req) {
+    console.log(req.user)
+    return {user: req.user}
   }
 
 
