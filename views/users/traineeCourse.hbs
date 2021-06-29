@@ -17,7 +17,7 @@
         href="https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap"
         rel="stylesheet">
 
-     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet"
         href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -29,14 +29,10 @@
     <link rel="stylesheet" href="/css/user/responsive.css">
     <link rel="stylesheet" href="/css/user/contact.css">
     <link rel="stylesheet" href="/css/user/default.css">
+    <link rel="stylesheet" href="/css/user/table.css">
     <!-- Slick CSs -->
     <link rel="stylesheet" href="/slick-1.8.1/slick/slick-theme.css">
     <link rel="stylesheet" href="/slick-1.8.1/slick/slick.css">
-
-     {{#block "header"}}
-
-            {{/block}}
-
 </head>
 
 <body>
@@ -49,11 +45,8 @@
                     <span><i class="fas fa-phone"></i>123-456-789</span>
                     <span><i class="fas fa-envelope"></i>tung@gmail.com</span>
                 </div>
-
-
             </div>
         </div>
-
         <nav class="navbar">
             <div class="row container">
                 <a href="index.html" class="navbar-brand">
@@ -63,7 +56,6 @@
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
-
             <div class="navbar-collapse">
                 <button type="button" class="navbar-hide-btn">
                     <i class="fas fa-times"></i>
@@ -136,10 +128,44 @@
 
     <!-- course -->
     <section class="course">
-         {{#block "main"}}
-
-        {{/block}}
-
+        {{!-- <table class="table-container">
+            <tr>
+                <th>Course</th>
+                <th>Topic</th>
+                <th>Trainer</th>
+            </tr>
+            {{#each courses}}
+            <tr>
+                <td><a href="/courses/detail?id={{course.id}}">{{course.course_name}}</a></td>
+                <td><a href="/topics/detail?id={{subject.id}}">{{subject.sub_name}}</a></td>
+                <td>
+                    <a href="/trainers/detail?id={{trainer.id}}">{{trainer.name}}
+                    </a>
+                </td>
+            </tr>
+            {{/each}}
+        </table> --}}
+        {{#each courses}}
+        <div class="box">
+                <img src="/img/edu-survey-landing-image.jpg" alt="">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div>
+                <h3></h3>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque ullam omnis odit accusamus doloremque?
+                    Cum aliquid unde nulla. Vitae, adipisci?</p>
+                <a href="#" class="btn-course">View</a>
+                <div class="icons">
+                    <p> <i class="far fa-clock"></i> {{subject.slot}} </p>
+                    <p> <i class="far fa-calendar"></i> 25/04/2020 </p>
+                    <p> <i class="fas fa-book"></i> {{trainer.name}} </p>
+                </div>
+            </div>
+        {{/each}}
     </section>
     <!--  -->
 
@@ -218,9 +244,6 @@
     <script src="./slick-1.8.1/slick/slick.js"></script>
     <!-- cutom js -->
     <script src="js/main.js"></script>
-     {{#block "footer"}}
-
-            {{/block}}
 </body>
 
 </html>

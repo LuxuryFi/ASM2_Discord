@@ -1,4 +1,5 @@
 import { Body, Controller, Get , Post, Query, Render, Req, Request, Res} from '@nestjs/common';
+import axios from 'axios';
 import { query } from 'express';
 import { CreateSubjectDto } from './dto/create-subject.dto';
 import { UpdateSubjectDto } from './dto/update-topic.dto';
@@ -51,7 +52,6 @@ export class SubjectController {
         } catch (error) {
             console.log(error)
         }
-
     }
 
     @Get('delete')
@@ -67,7 +67,6 @@ export class SubjectController {
         let subject = this.subjectService.findOne(query.id);
         return { subject : subject}
     }
-
 
     // localhost:3000/subject/update
 

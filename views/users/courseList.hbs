@@ -1,0 +1,33 @@
+{{#extend "user"}}
+
+    {{#content "header" mode="prepend"}}
+        <link rel="stylesheet" href="/css/user/table.css">
+    {{/content}}
+
+    {{#content "main"}}
+           <table class="table-container">
+            <tr>
+                <th>ID</th>
+                <th>Course</th>
+                <th>Trainer</th>
+                <th>Subject</th>
+            </tr>
+            {{#each courses}}
+            <tr>
+                <td><a href="/courses/detail?id=">{{id}}</a></td>
+                <td><a href="/topics/detail?id=">{{course.course_name}}</a></td>
+                <td>
+                    <a href="/trainers/detail?id=">{{trainer.name}}
+                    </a>
+                </td>
+                  <td>
+                    <a href="/trainers/detail?id=">{{subject.sub_name}}
+                    </a>
+                </td>
+            </tr>
+            {{/each}}
+        </table>
+
+    {{/content}}
+
+{{/extend}}
