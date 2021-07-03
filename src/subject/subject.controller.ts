@@ -14,14 +14,16 @@ export class SubjectController {
     @Get('index')
     async index (@Request() req) {
         let subjects = await this.subjectService.findAll();
-        return {subjects: subjects}
+        return {subjects: subjects, user: req.user}
     }
 
     // localhost:3000/subject/create GET
 
     @Render('subjects/create.hbs')
     @Get('create')
-    async create () {}
+    async create (@Req() req) {
+        return {user: req.user}
+    }
 
     // localhost:3000/subject/create POST
 
@@ -40,7 +42,7 @@ export class SubjectController {
     @Get('update')
     async update (@Req() req, @Query() query) {
         let subject = await this.subjectService.findOne(query.id);
-        return { subject : subject}
+        return { subject : subject, user: req.user}
     }
 
     @Post('update')
@@ -65,7 +67,7 @@ export class SubjectController {
     @Get('detail')
     async detail (@Req() req, @Query() query) {
         let subject = this.subjectService.findOne(query.id);
-        return { subject : subject}
+        return { subject : subject, user: req.user}
     }
 
     // localhost:3000/subject/update

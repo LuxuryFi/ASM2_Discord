@@ -18,12 +18,14 @@ export class TrainerController {
     @Get('index')
     async index(@Request() req) {
         let trainers = await this.trainerService.findAll();
-        return { trainers: trainers }
+        return { trainers: trainers, user: req.user }
     }
 
     @Render('trainers/create.hbs')
     @Get('create')
-    async create() { }
+    async create(@Req() req) {
+        return { user: req.user}
+     }
 
     @Post('create')
     @UseInterceptors(FileInterceptor('avatar', {
@@ -56,7 +58,7 @@ export class TrainerController {
     async update(@Req() req, @Query() query) {
         let trainer = await this.trainerService.findOne(query.id);
         console.log(trainer)
-        return { trainer: trainer }
+        return { trainer: trainer, user: req.user }
     }
 
     @Post('update')
@@ -102,7 +104,7 @@ export class TrainerController {
     @Get('detail')
     async detail(@Req() req, @Query() query) {
         let trainer = await this.trainerService.findOne(query.id);
-        return { trainer: trainer }
+        return { trainer: trainer, user: req.user }
     }
 
 

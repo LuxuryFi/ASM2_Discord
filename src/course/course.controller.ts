@@ -14,14 +14,14 @@ export class CourseController {
     @Get('index')
     async index (@Request() req) {
         let courses = await this.courseService.findAll();
-        return {courses: courses}
+        return {courses: courses, user: req.user}
     }
 
     @Render('courses/create.hbs')
     @Get('create')
-    async create () {
+    async create (@Req() req) {
         let categories = await this.categoryService.findAll();
-        return {categories: categories}
+        return {categories: categories, user: req.user}
     }
 
     @Post('create')
@@ -44,7 +44,7 @@ export class CourseController {
     async update (@Req() req, @Query() query) {
         let course = await this.courseService.findOne(query.id);
         let categories = await this.categoryService.findAll();
-        return { course : course, categories : categories}
+        return { course : course, categories : categories, user: req.user}
     }
 
     @Post('update')
@@ -69,7 +69,7 @@ export class CourseController {
     @Get('detail')
     async detail (@Req() req, @Query() query) {
         let course = this.courseService.findOne(query.id);
-        return { course : course}
+        return { course : course, user: req.user}
     }
 
 }

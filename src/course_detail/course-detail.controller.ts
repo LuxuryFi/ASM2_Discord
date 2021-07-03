@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Query, Render, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, Render, Req, Res, UseGuards } from '@nestjs/common';
 import { CategoryService } from 'src/category/category.service';
 import { CourseService } from 'src/course/course.service';
 //import { Role } from 'src/role/role.enum';
@@ -25,21 +25,21 @@ export class CourseDetailController {
     //@UseGuards(RolesGuard)
     @Render('course-detail/index.hbs')
     @Get('index')
-    async index() {
+    async index(@Req() req) {
         let course_details = await this.coursedetailService.findAll();
-        return {course_details : course_details}
+        return {course_details : course_details, user: req.user}
     }
 
     //@Roles(Role.Admin,Role.Staff)
     //@UseGuards(RolesGuard)
     @Render('course-detail/create.hbs')
     @Get('create')
-    async create() {
+    async create(@Req() req) {
         let courses = await this.courseService.findAll();
         let subjects = await this.subjectService.findAll();
         let trainers = await this.trainerService.findAll();
 
-        return { courses: courses, subjects: subjects, trainers: trainers }
+        return {user: req.user, courses: courses, subjects: subjects, trainers: trainers }
     }
 
     //@Roles(Role.Admin,Role.Staff)
@@ -54,9 +54,9 @@ export class CourseDetailController {
     //@UseGuards(RolesGuard)
     @Render('course-detail/view.hbs')
     @Get('detail')
-    async detail(@Query() query){
+    async detail(@Query() query, @Req() req){
         let course_detail = await this.coursedetailService.findOne(query.course_id,query.subject_id,query.trainer_id);
-        return {course_detail: course_detail}
+        return {course_detail: course_detail, user: req.user}
     }
 
     //@Roles(Role.Admin,Role.Staff)

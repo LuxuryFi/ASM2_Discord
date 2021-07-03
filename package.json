@@ -38,6 +38,7 @@
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",
     "connect-flash": "^0.1.1",
+    "dotenv": "^10.0.0",
     "express-session": "^1.17.2",
     "handlebars": "^4.7.7",
     "handlebars-layouts": "^3.1.4",

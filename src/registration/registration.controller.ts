@@ -14,17 +14,17 @@ export class RegistrationController {
 
     @Render('registrations/index.hbs')
     @Get('index')
-    async index(){
+    async index(@Req() req){
         let registration =await this.registrationService.findAll();
-        return {trainees: registration}
+        return {trainees: registration,  user: req.user}
     }
 
     @Render('registrations/create.hbs')
     @Get('create')
-    async create(){
+    async create(@Req() req){
         let coursedetails = await this.coursedetailService.findAll();
         let trainees = await this.traineeService.findAll();
-        return {coursedetails: coursedetails, trainees: trainees}
+        return {coursedetails: coursedetails, trainees: trainees, user: req.users}
     }
 
     @Post('create')
@@ -35,14 +35,14 @@ export class RegistrationController {
 
     @Render('registrations/index.hbs')
     @Get('detail')
-    async detail(@Res()  res, @Query() query){
+    async detail(@Res()  res,@Req() req, @Query() query){
         let trainees = await this.registrationService.findAllTraineeByCourse(query.course_id,query.subject_id,query.trainer_id);
         let courses = {
             course_id : query.course_id,
             subject_id: query.subject_id,
             trainer_id: query.trainer_id
         }
-        return {trainees : trainees, courses: courses}
+        return {trainees : trainees, courses: courses, user: req.user}
     }
 
     @Get('delete')
@@ -53,9 +53,9 @@ export class RegistrationController {
 
     @Render('registrations/create.hbs')
     @Get('add')
-    async add(@Query() query){
+    async add(@Query() query,@Req() req){
         let courses = await this.coursedetailService.findMany(query.course_id,query.subject_id,query.trainer_id)
         let trainees = await this.traineeService.findAll();
-        return  {coursedetails : courses, trainees: trainees}
+        return  {coursedetails : courses, trainees: trainees, user: req.user}
     }
 }

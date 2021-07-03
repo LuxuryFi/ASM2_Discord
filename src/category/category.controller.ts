@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Query, Render, Res } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, Render, Req, Res } from '@nestjs/common';
 import { CategoryService } from './category.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
@@ -9,14 +9,16 @@ export class CategoriesController {
 
     @Render('categories/index.hbs')
     @Get('index')
-    async index() {
+    async index(@Req() req) {
         let categories = await this.categoriesService.findAll();
-        return {categories : categories};
+        return {categories : categories, user: req.user};
     }
 
     @Render('categories/create.hbs')
     @Get('create')
-    create(){}
+    create(@Req() req){
+        return { user: req.user};
+    }
 
     @Post('create')
     async createOne(@Body() createCategory : CreateCategoryDto, @Res() res){
@@ -26,9 +28,9 @@ export class CategoriesController {
 
     @Render('categories/update.hbs')
     @Get('update')
-    async update(@Query() query){
+    async update(@Query() query, @Req() req){
         let category = await this.categoriesService.findOne(query.id);
-        return {category : category}
+        return {category : category, user: req.user}
     }
 
     @Post('update')
@@ -39,9 +41,9 @@ export class CategoriesController {
 
     @Render('categories/detail.hbs')
     @Get('detail')
-    async detail(@Query() query){
+    async detail(@Query() query, @Req() req){
         let category = await this.categoriesService.findOne(query.id);
-        return {category : category};
+        return {category : category, user: req.user};
     }
 
     @Get('delete')

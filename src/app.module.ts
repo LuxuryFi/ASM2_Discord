@@ -1,3 +1,5 @@
+
+require('dotenv').config({})
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -17,14 +19,33 @@ import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [AdminModule,AuthModule, StaffModule, TraineeModule, TrainerModule, CategoryModule, SubjectModule, CourseModule, CourseDetailModule, RegistrationModule,
-  TypeOrmModule.forRootAsync({
-    useFactory: async () => Object.assign( await getConnectionOptions(), {
-      autoLoadEntities: true,
-    })
-  }),
-  UserModule],
+  imports: [AdminModule, AuthModule, StaffModule, TraineeModule, TrainerModule, CategoryModule, SubjectModule, CourseModule, CourseDetailModule, RegistrationModule,
+    // TypeOrmModule.forRootAsync({
+    //   useFactory: async () => Object.assign(await getConnectionOptions(), {
+    //     autoLoadEntities: true,
+    //   })
+    // }),
+    TypeOrmModule.forRoot({
+      type: "mysql",
+      host: process.env.DB_HOST,
+      port: Number(process.env.DB_PORT),
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
+      entities: [
+        "dist/**/*.entity.{js,ts}"
+      ],
+      migrations: [
+        "src/migrations/**/*.ts"
+      ],
+      cli: {
+        "migrationsDir": "src/migrations"
+      },
+      synchronize: false,
+      autoLoadEntities: true
+    }),
+    UserModule],
   controllers: [AppController],
   providers: [AppService, AppGateway],
 })
-export class AppModule {}
+export class AppModule { }
