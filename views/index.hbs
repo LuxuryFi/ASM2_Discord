@@ -41,7 +41,7 @@
     const clients = [];
     $(function () {
 
-        const socket = io('http://localhost:3001');
+        const socket = io('http://103.107.183.217:3001');
         socket.io.on('connection', client => {
             clients.push(client);
         })
