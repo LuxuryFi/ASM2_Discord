@@ -1,6 +1,9 @@
-import { Body, Controller, Get , Post, Query, Render, Req, Request, Res} from '@nestjs/common';
+import { Body, Controller, Get , Post, Query, Render, Req, Request, Res, UseGuards} from '@nestjs/common';
 import axios from 'axios';
 import { query } from 'express';
+import { Role } from 'src/role/role.enum';
+import { RolesGuard } from 'src/role/role.guard';
+import { Roles } from 'src/role/roles.decorator';
 import { CreateSubjectDto } from './dto/create-subject.dto';
 import { UpdateSubjectDto } from './dto/update-topic.dto';
 import { SubjectService } from './subject.service';
@@ -10,6 +13,8 @@ export class SubjectController {
     constructor(private readonly subjectService: SubjectService){}
     // localhost:3000/subject/index GET
 
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Render('subjects/index.hbs')
     @Get('index')
     async index (@Request() req) {
@@ -19,6 +24,8 @@ export class SubjectController {
 
     // localhost:3000/subject/create GET
 
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Render('subjects/create.hbs')
     @Get('create')
     async create (@Req() req) {
@@ -27,6 +34,8 @@ export class SubjectController {
 
     // localhost:3000/subject/create POST
 
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Post('create')
     createOne(@Body() createSubject : CreateSubjectDto, @Res() res) {
         try {
@@ -38,6 +47,8 @@ export class SubjectController {
         }
     }
 
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Render('subjects/update.hbs')
     @Get('update')
     async update (@Req() req, @Query() query) {
@@ -45,6 +56,8 @@ export class SubjectController {
         return { subject : subject, user: req.user}
     }
 
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Post('update')
     async updateOne(@Body() updateSubject : UpdateSubjectDto, @Res() res) {
         console.log(updateSubject)
@@ -56,6 +69,8 @@ export class SubjectController {
         }
     }
 
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Get('delete')
     async deleteOne(@Query() query, @Res() res) {
         console.log(query.id);
@@ -63,6 +78,8 @@ export class SubjectController {
         res.status(302).redirect('/subject/index')
     }
 
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Render('subjects/detail.hbs')
     @Get('detail')
     async detail (@Req() req, @Query() query) {

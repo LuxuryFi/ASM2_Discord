@@ -1,6 +1,9 @@
 import { Body, Controller, Get, Post, Query, Render, Req, Res, UseGuards } from '@nestjs/common';
 import { CategoryService } from 'src/category/category.service';
 import { CourseService } from 'src/course/course.service';
+import { Role } from 'src/role/role.enum';
+import { RolesGuard } from 'src/role/role.guard';
+import { Roles } from 'src/role/roles.decorator';
 //import { Role } from 'src/role/role.enum';
 //import { RolesGuard } from 'src/role/role.guard';
 //import { Roles } from 'src/role/roles.decorator';
@@ -21,8 +24,8 @@ export class CourseDetailController {
     ) { }
 
 
-    //@Roles(Role.Admin,Role.Staff)
-    //@UseGuards(RolesGuard)
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Render('course-detail/index.hbs')
     @Get('index')
     async index(@Req() req) {
@@ -30,8 +33,8 @@ export class CourseDetailController {
         return {course_details : course_details, user: req.user}
     }
 
-    //@Roles(Role.Admin,Role.Staff)
-    //@UseGuards(RolesGuard)
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Render('course-detail/create.hbs')
     @Get('create')
     async create(@Req() req) {
@@ -42,16 +45,16 @@ export class CourseDetailController {
         return {user: req.user, courses: courses, subjects: subjects, trainers: trainers }
     }
 
-    //@Roles(Role.Admin,Role.Staff)
-    //@UseGuards(RolesGuard)
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Post('create')
     async createOne(@Res() res, @Body() createCourseDetail: createCourseDetailDto) {
         await this.coursedetailService.create(createCourseDetail);
         res.status(302).redirect('/course-detail/index')
     }
 
-    //@Roles(Role.Admin,Role.Staff)
-    //@UseGuards(RolesGuard)
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Render('course-detail/view.hbs')
     @Get('detail')
     async detail(@Query() query, @Req() req){
@@ -59,8 +62,8 @@ export class CourseDetailController {
         return {course_detail: course_detail, user: req.user}
     }
 
-    //@Roles(Role.Admin,Role.Staff)
-    //@UseGuards(RolesGuard)
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Render('course-detail/update.hbs')
     @Get('update')
     async update(@Query() query){
@@ -72,16 +75,16 @@ export class CourseDetailController {
         return {course_detail: course_detail,courses: courses, subjects: subjects, trainers: trainers}
     }
 
-    //@Roles(Role.Admin,Role.Staff)
-    //@UseGuards(RolesGuard)
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Post('update')
     async updateOne(@Res() res,@Body() updateCourseDetail : updateCourseDetailDto){
         await this.coursedetailService.update(updateCourseDetail);
         res.status(302).redirect('/course-detail/index')
     }
 
-    //@Roles(Role.Admin,Role.Staff)
-    //@UseGuards(RolesGuard)
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Get('delete')
     async deleteOne(@Res() res, @Query() query){
         await this.coursedetailService.delete(query.course_id,query.subject_id,query.trainer_id)

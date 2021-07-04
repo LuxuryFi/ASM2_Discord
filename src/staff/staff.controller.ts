@@ -10,13 +10,16 @@ import { UpdateStaffDto } from './dto/update-staff.dto';
 import { ExpressAdapter, FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
+import { Role } from 'src/role/role.enum';
+import { RolesGuard } from 'src/role/role.guard';
+import { Roles } from 'src/role/roles.decorator';
 
 @Controller('staff')
 export class StaffController {
     constructor(private readonly staffService : StaffService){}
 
-    // @Roles(Role.Admin,Role.Staff)
-    // @UseGuards(RolesGuard)
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Render('staffs/index.hbs')
     @Get('index')
     async index(@Req() req){
@@ -24,16 +27,16 @@ export class StaffController {
         return {user: req.user,staffs: staffs}
     }
 
-    // @Roles(Role.Admin)
-    // @UseGuards(RolesGuard)
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Render('staffs/create.hbs')
     @Get('create')
     create(@Req() req){
         return {user: req.user}
     }
 
-    // @Roles(Role.Admin)
-    // @UseGuards(RolesGuard)
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Post('create')
     @UseInterceptors(FileInterceptor('avatar', {
         storage: diskStorage({
@@ -54,16 +57,16 @@ export class StaffController {
         }
     }
 
-    // @Roles(Role.Admin)
-    // @UseGuards(RolesGuard)
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Get('delete')
     async deleteOne(@Res() res, @Query() query){
         await this.staffService.deleteOne(query.id);
         res.status(302).redirect('/staff/index')
     }
 
-    // @Roles(Role.Admin)
-    // @UseGuards(RolesGuard)
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Render('staffs/update.hbs')
     @Get('update')
     async update(@Req() req,@Query() query){
@@ -71,8 +74,8 @@ export class StaffController {
         return {user: req.user,staff : staff}
     }
 
-    // @Roles(Role.Admin)
-    // @UseGuards(RolesGuard)
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Post('update')
     @UseInterceptors(FileInterceptor('avatar', {
         storage: diskStorage({
@@ -105,8 +108,8 @@ export class StaffController {
         }
     }
 
-    // @Roles(Role.Admin,Role.Staff)
-    // @UseGuards(RolesGuard)
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Render('staffs/view.hbs')
     @Get('detail')
     async detail(@Req() req,@Res() res, @Query() query){

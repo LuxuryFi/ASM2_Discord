@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Query, Render, Req, Request, Res, UploadedFile, UseInterceptors } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, Render, Req, Request, Res, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { query } from 'express';
 import { diskStorage } from 'multer';
@@ -8,12 +8,17 @@ import { TrainerService } from './trainer.service';
 import * as fs from 'fs'
 import * as path from 'path'
 import { extname } from 'path';
+import { Role } from 'src/role/role.enum';
+import { RolesGuard } from 'src/role/role.guard';
+import { Roles } from 'src/role/roles.decorator';
 
 @Controller('trainer')
 export class TrainerController {
     constructor(private readonly trainerService:
         TrainerService) { }
 
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Render('trainers/index.hbs')
     @Get('index')
     async index(@Request() req) {
@@ -21,12 +26,16 @@ export class TrainerController {
         return { trainers: trainers, user: req.user }
     }
 
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Render('trainers/create.hbs')
     @Get('create')
     async create(@Req() req) {
         return { user: req.user}
      }
 
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Post('create')
     @UseInterceptors(FileInterceptor('avatar', {
         storage: diskStorage({
@@ -53,6 +62,8 @@ export class TrainerController {
         }
     }
 
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Render('trainers/update.hbs')
     @Get('update')
     async update(@Req() req, @Query() query) {
@@ -61,6 +72,8 @@ export class TrainerController {
         return { trainer: trainer, user: req.user }
     }
 
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Post('update')
     @UseInterceptors(FileInterceptor('avatar', {
         storage: diskStorage({
@@ -93,6 +106,8 @@ export class TrainerController {
         }
     }
 
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Get('delete')
     async deleteOne(@Query() query, @Res() res) {
         console.log(query.id);
@@ -100,6 +115,8 @@ export class TrainerController {
         res.status(302).redirect('/trainer/index')
     }
 
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
     @Render('trainers/view.hbs')
     @Get('detail')
     async detail(@Req() req, @Query() query) {

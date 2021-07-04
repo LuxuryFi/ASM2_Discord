@@ -50,6 +50,6 @@ async function bootstrap() {
   hbs.handlebars.registerHelper(layouts(hbs.handlebars));
   hbs.handlebars.registerPartial('user', hbs.handlebars.compile(fs.readFileSync(join(__dirname, '..', 'views/users/layout.hbs'), 'utf-8')));
 
-  await app.listen(3000 || process.env.PORT);
+  await app.listen(process.env.PORT);
 }
 bootstrap();
