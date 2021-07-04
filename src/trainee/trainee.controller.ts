@@ -96,6 +96,23 @@ export class TraineeController {
         return { trainee: trainee, user:req.user}
     }
 
+
+
+    @Roles(Role.Admin,Role.Staff)
+    @UseGuards(RolesGuard)
+    @Render('trainees/index.hbs')
+    @Get('search')
+    async search(@Body() body,@Query() query, @Req() req) {
+
+        const name = query.search;
+        let trainees = await this.traineeService.findByName(name);
+        console.log(trainees)
+        return { trainees: trainees, user:req.user}
+    }
+
+
+
+
     @Roles(Role.Admin,Role.Staff)
     @UseGuards(RolesGuard)
     @Post('update')

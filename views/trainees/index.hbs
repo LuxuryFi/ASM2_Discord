@@ -23,6 +23,16 @@
         <div class="box-header">
             Students List
         </div>
+        <form action="/trainee/search" method="GET">
+            <div class="form-group">
+                <div class="form-line">
+                    <label>Search By Name</label>
+                    <input type="text" name="search" class="form-control">
+                </div>
+            </div>
+
+        </form>
+
         <div class="box-body overflow-scroll">
             <table>
                 <thead>
@@ -59,7 +69,7 @@
                             </div>
                         </td>
                         <td>{{address}}</td>
-                          <td>
+                        <td>
                             <div class="teach-status teach-paid">
                                 <img width="150px" src="/uploads/trainees/{{avatar}}" alt="">
                             </div>

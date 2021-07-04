@@ -33,6 +33,23 @@ async function bootstrap() {
     }
   })
 
+  hbs.handlebars.registerHelper('trainer', function (role) {
+    if (role == 'trainer') {
+      return 'hidden';
+    } else {
+      return '';
+    }
+  })
+
+  hbs.handlebars.registerHelper('trainee', function (role) {
+    if (role == 'trainee') {
+      return 'hidden';
+    } else {
+      return '';
+    }
+  })
+
+
   app.use(
     session({
       secret: 'nest cats',

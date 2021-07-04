@@ -1,0 +1,29 @@
+{{#extend "user"}}
+
+    {{#content "header" mode="prepend"}}
+        <link rel="stylesheet" href="/css/user/table.css">
+    {{/content}}
+
+    {{#content "main"}}
+           <table class="table-container">
+            <tr>
+                 <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Avatar</th>
+            </tr>
+            {{#each trainers}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{name}}</td>
+                <td>{{email}}</td>
+                <td>{{phone}}</td>
+                <td><img width="150px" src="/uploads/trainers/{{avatar}}"  alt=""></td>
+            </tr>
+            {{/each}}
+        </table>
+
+    {{/content}}
+
+{{/extend}}

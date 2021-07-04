@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { getConnection, Repository } from 'typeorm';
+import { getConnection, Like, Repository } from 'typeorm';
 import { CreateTraineeDto } from './dto/create-trainee.dto';
 import { UpdateTraineeDto } from './dto/update-trainee.dto';
 import { Trainee } from 'src/database/entities/trainee.entity';
@@ -46,6 +46,21 @@ export class TraineeService {
         .where('trainee.email = :email', {email : username})
         .andWhere('trainee.password = :password', {password : password})
         .getOne()
+    }
+
+    async findByName(name: string) : Promise<Trainee[]> {
+        const regex = `%${name}%`;
+        return this.traineeRepository.find({
+            where : [
+            {
+                name: Like(regex)
+            }, {
+                email: Like(regex)
+            }, {
+                phone: Like(regex)
+            }
+            ]
+        })
     }
 
 

@@ -1,4 +1,4 @@
-import { Controller, Get, Query, Render } from '@nestjs/common';
+import { Controller, Get, Query, Render, Req } from '@nestjs/common';
 import { CourseService } from 'src/course/course.service';
 import { CourseDetailService } from 'src/course_detail/course-detail.service';
 import { RegistrationService } from 'src/registration/registration.service';
@@ -17,12 +17,26 @@ export class UserController {
 
     @Render('users/index.hbs')
     @Get('index')
-    index() {
-
+    async index(@Req() req) {
+        const courses1 = await this.coursedetailService.findByCourse(req.user.id);
+        const courses2 = await this.registrationService.findAllTrainee(req.user.id);
+        return {courses1: courses1, course2: courses2, user: req.user}
     }
 
-    @Render('users/traineeCourse.hbs')
-    @Get('coursetrainee')
+
+    @Render('users/trainerList.hbs')
+    @Get('trainer')
+    async getTrainerList(@Req() req) {
+        const trainers = await this.trainerService.findAll();
+        const courses1 = await this.coursedetailService.findByCourse(req.user.id);
+        const courses2 = await this.registrationService.findAllTrainee(req.user.id);
+        console.log(req.user);
+        return {user: req.user,course1:courses1, course2: courses2,trainers: trainers};
+    }
+
+
+    @Render('users/trainerCourse.hbs')
+    @Get('coursetrainer')
     async getTraineeCourse(@Query() query){
         const courses = await this.coursedetailService.findByCourse(query.trainer_id);
         return {courses: courses}
