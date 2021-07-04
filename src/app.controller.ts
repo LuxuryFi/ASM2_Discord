@@ -9,28 +9,30 @@ export class AppController {
   @Render('auth/login.hbs')
   @Get()
   async loginin(@Req() req, @Res() res, @Next() next) {
-    console.log(req.user)
     if (req.user && (req.user.role_id == 'trainee' || req.user.role_id == 'trainer')) {
-      await res.status(200).redirect('/');
+      await res.redirect('/user/index');
     }
     if (req.user && (req.user.role_id == 'staff' || req.user.role_id == 'admin')) {
-      await res.status(200).redirect('/index');
+      await res.redirect('/index');
     }
     else {
-      // next();
+
     }
   }
 
   @UseGuards(LoginGuard)
   @Post()
-  login(@Req() req, @Res() res, @Next() next) {
-    console.log('user',req.user)
+  async login(@Req() req, @Res() res, @Next() next) {
     if (req.user.role_id == 'trainee' || req.user.role_id == 'trainer') {
-      res.redirect('/user/index')
+      await res.redirect('/user/index')
+    }
+    else if (req.user.role_id == 'staff' || req.user.role_id == 'admin') {
+      await res.redirect('index')
     }
     else {
-      res.redirect('index')
+      next();
     }
+
   }
 
   @Render('index.hbs')

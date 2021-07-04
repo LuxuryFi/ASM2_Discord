@@ -48,6 +48,7 @@ async function bootstrap() {
       return '';
     }
   })
+  app.enableCors();
 
 
   app.use(
