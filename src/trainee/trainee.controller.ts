@@ -113,7 +113,7 @@ export class TraineeController {
 
 
 
-    @Roles(Role.Admin,Role.Staff)
+    @Roles(Role.Admin,Role.Staff) 
     @UseGuards(RolesGuard)
     @Post('update')
     @UseInterceptors(FileInterceptor('avatar', {
