@@ -1,7 +1,10 @@
-import { Controller, Get, Query, Render, Req } from '@nestjs/common';
+import { Controller, Get, Query, Render, Req, UseGuards } from '@nestjs/common';
 import { CourseService } from 'src/course/course.service';
 import { CourseDetailService } from 'src/course_detail/course-detail.service';
 import { RegistrationService } from 'src/registration/registration.service';
+import { Role } from 'src/role/role.enum';
+import { RolesGuard } from 'src/role/role.guard';
+import { Roles } from 'src/role/roles.decorator';
 import { SubjectService } from 'src/subject/subject.service';
 import { TrainerService } from 'src/trainer/trainer.service';
 
@@ -15,6 +18,8 @@ export class UserController {
         private readonly courseService: CourseService
     ) { }
 
+    @Roles(Role.Trainee,Role.Trainer)
+    @UseGuards(RolesGuard)
     @Render('users/index.hbs')
     @Get('index')
     async index(@Req() req) {
@@ -23,7 +28,8 @@ export class UserController {
         return {courses1: courses1, course2: courses2, user: req.user}
     }
 
-
+    @Roles(Role.Trainee,Role.Trainer)
+    @UseGuards(RolesGuard)
     @Render('users/trainerList.hbs')
     @Get('trainer')
     async getTrainerList(@Req() req) {
@@ -34,7 +40,8 @@ export class UserController {
         return {user: req.user,course1:courses1, course2: courses2,trainers: trainers};
     }
 
-
+    @Roles(Role.Trainee,Role.Trainer)
+    @UseGuards(RolesGuard)
     @Render('users/trainerCourse.hbs')
     @Get('coursetrainer') 
     async getTraineeCourse(@Query() query){
@@ -42,19 +49,24 @@ export class UserController {
         return {courses: courses}
     }
 
+    @Roles(Role.Trainee,Role.Trainer)
+    @UseGuards(RolesGuard)
     @Render('users/trainerCourse.hbs')
     @Get('coursetrainer')
     getTrainerCourse(){
 
     }
 
+    @Roles(Role.Trainee,Role.Trainer)
+    @UseGuards(RolesGuard)
     @Render('users/layout.hbs')
     @Get('test')
     test() {
 
     }
 
-
+    @Roles(Role.Trainee,Role.Trainer)
+    @UseGuards(RolesGuard)
     @Render('users/courseList.hbs')
     @Get('course')
     async getCourseLList() {
@@ -63,6 +75,8 @@ export class UserController {
 
     }
 
+    @Roles(Role.Trainee,Role.Trainer)
+    @UseGuards(RolesGuard)
     @Render('users/traineeList.hbs')
     @Get('student')
     async getTraineeList(@Query() query){
