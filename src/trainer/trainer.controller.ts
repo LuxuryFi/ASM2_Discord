@@ -29,16 +29,16 @@ export class TrainerController {
 
     @Get('export')
     async exportCSV(@Req() req, @Res() res) {
-        let trainees = await this.trainerService.findAll();
+        let trainers = await this.trainerService.findAll();
         let timestamp = new Date().getTime() / 1000;
         const fields = ['id','name','avatar','email','phone','password','role_id'];
 
 
         const parser = new Parser({fields});
 
-        const csv =parser.parse(trainees);
+        const csv =parser.parse(trainers);
 
-        const filename = path.join(__dirname,'../','../','public/csv/trainee/', './' + timestamp.toString() + 'trainee.csv');
+        const filename = path.join(__dirname,'../','../','public/csv/trainer/', './' + timestamp.toString() + 'trainer.csv');
 
         console.log(filename)
         fs.writeFileSync(filename,"\uFEFF" + csv, 'utf-8');
