@@ -149,7 +149,7 @@ textarea.form-control {
 	background-color: #18aefa;
 	border-color: #18aefa;
 	color: #fff;
-}   
+}
 
 .btn-primary.disabled, .btn-primary:disabled {
     background-color: #FFBC53;
@@ -157,3 +157,17 @@ textarea.form-control {
     color: #fff;
 }
 
+.btn-1 {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    display: grid;
+    cursor: pointer;
+    color: var(--main-color);
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+}
+
+.btn-1 a {
+
+}

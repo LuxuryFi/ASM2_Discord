@@ -13,7 +13,6 @@ export class AuthController {
         try {
             const { username , password} = body;
             const result = await this.authService.validateUser(username, password);
-
             res.send(result);
         } catch (error) {
             console.log("validate")

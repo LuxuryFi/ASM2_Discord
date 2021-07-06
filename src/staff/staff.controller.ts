@@ -13,6 +13,7 @@ import { extname } from 'path';
 import { Role } from 'src/role/role.enum';
 import { RolesGuard } from 'src/role/role.guard';
 import { Roles } from 'src/role/roles.decorator';
+import { Parser } from 'json2csv';
 
 @Controller('staff')
 export class StaffController {
@@ -25,6 +26,26 @@ export class StaffController {
     async index(@Req() req){
         let staffs = await this.staffService.findAll();
         return {user: req.user,staffs: staffs}
+    }
+
+
+    @Get('export')
+    async exportCSV(@Req() req, @Res() res) {
+        let trainees = await this.staffService.findAll();
+        let timestamp = new Date().getTime() / 1000;
+        const fields = ['id','name','avatar','email','phone','password','role_id'];
+
+
+        const parser = new Parser({fields});
+
+        const csv =parser.parse(trainees);
+
+        const filename = path.join(__dirname,'../','../','public/csv/trainee/', './' + timestamp.toString() + 'trainee.csv');
+
+        console.log(filename)
+        fs.writeFileSync(filename,"\uFEFF" + csv, 'utf-8');
+
+        res.download(filename);
     }
 
     @Roles(Role.Admin,Role.Staff)
