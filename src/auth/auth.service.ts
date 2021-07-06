@@ -20,8 +20,6 @@ export class AuthService {
         const trainer = await this.trainerService.findByEmail(username, pass);
         const staff = await this.staffService.findByEmail(username, pass);
 
-        console.log(username, ' ', pass)
-
         if (trainee && trainee.email === username && trainee.password === pass) {
             const { password, ...result } = trainee;
             return result;

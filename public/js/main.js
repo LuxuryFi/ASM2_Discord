@@ -1,4 +1,10 @@
 $(document).ready(()=> {
+
+
+
+
+
+
     //navbar
     $('.navbar-show-btn').click(()=>{
         $('.navbar-collapse').addClass('showNavbar');
@@ -35,6 +41,7 @@ $(document).ready(()=> {
     $('.closebtn').on('click', function(){
         $(".search-box").fadeOut(600);
     });
+
 
 
 
