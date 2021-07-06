@@ -37,7 +37,6 @@ export class AppController {
   @Render('index.hbs')
   @Get('index')
   getAnCoHo(@Request() req) {
-    console.log(req.user)
     return {user: req.user}
   }
 
