@@ -13,9 +13,11 @@ import { TrainerService } from 'src/trainer/trainer.service';
 import { StaffService } from 'src/staff/staff.service';
 import { AdminService } from 'src/admin/admin.service';
 import { SessionSerializer } from './session.serializer';
+import { AuthController } from './auth.controller';
 
 @Module({
   imports: [PassportModule, TypeOrmModule.forFeature([Trainee,Trainer,Staff,Admin])],
   providers: [AuthService, LocalStrategy,TraineeService,TrainerService,StaffService,AdminService,SessionSerializer],
+  controllers: [AuthController],
 })
 export class AuthModule {}

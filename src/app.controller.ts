@@ -30,9 +30,8 @@ export class AppController {
       await res.redirect('index')
     }
     else {
-      next();
+      res.redirec('/');
     }
-
   }
 
   @Render('index.hbs')

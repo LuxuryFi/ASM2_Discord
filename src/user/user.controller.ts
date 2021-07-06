@@ -36,7 +36,7 @@ export class UserController {
 
 
     @Render('users/trainerCourse.hbs')
-    @Get('coursetrainer')
+    @Get('coursetrainer') 
     async getTraineeCourse(@Query() query){
         const courses = await this.coursedetailService.findByCourse(query.trainer_id);
         return {courses: courses}

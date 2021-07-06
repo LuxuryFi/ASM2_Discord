@@ -35,18 +35,12 @@ $(document).ready(()=> {
     $('.closebtn').on('click', function(){
         $(".search-box").fadeOut(600);
     });
-    
-    
-   
-    
-    
 
-    
-    
 
-    
-    
-    
-    
-    
+
+
+
+
+
+
 });
