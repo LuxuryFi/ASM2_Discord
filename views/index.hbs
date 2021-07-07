@@ -18,11 +18,14 @@
         <div class="card-footer">
             <form id="send_chat">
                 <div class="row">
-                    <div class="col-3">
-                        <input type="text" id="n" placeholder="Name" class="form-control" required>
-                    </div>
-                    <div class="col-8">
+                    {{!-- <div class="col-3">
+                        <label for="">{{user.name}}</label>
+                    </div> --}}
+                    <input type="hidden" id="n" value="{{user.name}}">
+                    <input type="hidden" id="u" value="{{user.email}}">
+                    <div class="col-11">
                         <input type="text" id="m" placeholder="Message" class="form-control" required>
+
                     </div>
                     <div class="col-1">
                         <button type="submit" id="form-submit" class="btn btn-primary">Send</button>
@@ -51,6 +54,7 @@
             socket.emit('message', {
                 name: $('#n').val(),
                 message: $('#m').val(),
+                username: $('#u').val()
             });
             $('#m').val('');
             return false;

@@ -14,7 +14,7 @@ export class AppGateway {
 
   @SubscribeMessage('message')
   handleMessage(client: any, payload: any): void {
-
+    console.log(payload);
     const random = Math.floor(Math.random() * this.colors.length);
 
     const idx = this.clients.findIndex(e =>
