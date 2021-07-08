@@ -1,84 +1,139 @@
 {{#extend "layout" mode="prepend"}}
 
-    {{#content "header" mode="prepend"}}
-        <link rel="stylesheet" href="/css/students.css">
-    {{/content}}
+{{#content "header" mode="prepend"}}
+<link rel="stylesheet" href="/css/students.css">
+<style>
+    .button {
+        display: inline-flex;
+        height: 40px;
+        padding: 0;
+        background: #009578;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        overflow: hidden;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        margin-top: 5px;
+    }
 
-    {{#content "main" mode="prepend"}}
-         <div class="main-header">
-            <div class="mobile-toggle" id="mobile-toggle">
-             <i class="bx bx-menu-alt-right"></i>
-            </div>
-            <div class="main-title">
-                Trainer List
-            </div>
-        </div>
+    .button:hover {
+        background: #008168;
+    }
 
-        <div class="col-12" style="margin-top: 15px;">
-            <!--  TABLE -->
-            <div class="box">
-                <div class="box-header">
-                </div>
-                <div>
-            <a href="/staff/export" class="btn-1">Export Staff's List</a>
+    .button:active {
+        background: #006e58;
+    }
+
+    .button-text,
+    .button-icon {
+        display: inline-flex;
+        align-items: center;
+        padding: 0 20px;
+        color: #fff;
+        height: 100%;
+    }
+
+    .button-text {
+        font-size: 16px;
+    }
+
+    .button-icon {
+        font-size: 1.5em;
+        background: rgba(0, 0, 0, 0.08);
+    }
+</style>
+
+{{/content}}
+
+{{#content "main" mode="prepend"}}
+<div class="main-header">
+    <div class="mobile-toggle" id="mobile-toggle">
+        <i class="bx bx-menu-alt-right"></i>
+    </div>
+    <div class="main-title">
+        Trainer List
+    </div>
+</div>
+
+<div class="col-12" style="margin-top: 15px;">
+    <!--  TABLE -->
+    <div class="box">
+        <div class="box-header">
         </div>
-                <div class="box-body overflow-scroll">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Trainer Name</th>
-                                <th>BoD</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>Address</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {{#each staffs}}
-                            <tr>
-                                <td>GCH18833</td>
-                                <td>
-                                    <div class="name-owner">
-                                        <span>{{name}}</span>
-                                    </div>
-                                </td>
-                                <td>17/11/2000</td>
-                                <td>
-                                    <span class="slot name-shipped">
-                                        {{email}}
-                                    </span>
-                                </td>
-                                <td>
-                                    <div class="teach-status teach-paid">
-                                        <div class="dot"></div>
-                                        <span>{{phone}}</span>
-                                    </div>
-                                </td>
-                                <td>Ha Noi</td>
-                                <td>
-                                    <img src="/uploads/staffs/{{avatar}}" width="150px" alt="">
-                                </td>
-                                <td class="text-right">
-                                    <div class="actions">
-                                        <a href="/staff/detail?id={{id}}">
-                                            <i class='las la-eye' ></i>
-                                        </a>
-                                        <a href="/staff/update?id={{id}}">
-                                            <i class='bx bxs-edit'></i>
-                                        </a>
-                                        <a href="/staff/delete?id={{id}}" onclick="return confirm(HI em, em co muon xoa khong)">
-                                            <i class='bx bxs-trash' ></i>
-                                        </a>
-                                    </div>
-                                </td>
-                                {{/each}}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <!-- END  TABLE -->
+        <div>
+            <a href="/staff/export">
+                <button type="button" class="button">
+                    <span class="button-text">Export Staff's List</span>
+                    <span class="button-icon">
+                        <ion-icon name="add-circle-outline"></ion-icon>
+                    </span>
+                </button>
+            </a>
         </div>
-    {{/content}}
+        <div class="box-body overflow-scroll">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Trainer Name</th>
+                        <th>BoD</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Avatar</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each staffs}}
+                    <tr>
+                        <td>GCH18833</td>
+                        <td>
+                            <div class="name-owner">
+                                <span>{{name}}</span>
+                            </div>
+                        </td>
+                        <td>17/11/2000</td>
+                        <td>
+                            <span class="slot name-shipped">
+                                {{email}}
+                            </span>
+                        </td>
+                        <td>
+                            <div class="teach-status teach-paid">
+                                <div class="dot"></div>
+                                <span>{{phone}}</span>
+                            </div>
+                        </td>
+                        <td>Ha Noi</td>
+                        <td>
+                            <span class="slot name-shipped"> 
+                                <img src="/uploads/staffs/{{avatar}}" width="150px" alt="">
+                            </span>
+                        </td>
+
+                        <td class="text-right">
+                            <div class="actions">
+                                <a href="/staff/detail?id={{id}}">
+                                    <i class='las la-eye'></i>
+                                </a>
+                                <a href="/staff/update?id={{id}}">
+                                    <i class='bx bxs-edit'></i>
+                                </a>
+                                <a href="/staff/delete?id={{id}}" onclick="return confirm(HI em, em co muon xoa khong)">
+                                    <i class='bx bxs-trash'></i>
+                                </a>
+                            </div>
+                        </td>
+                        {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- END  TABLE -->
+</div>
+{{/content}}
 {{/extend}}

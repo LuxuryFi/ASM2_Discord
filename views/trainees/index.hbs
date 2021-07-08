@@ -2,6 +2,49 @@
 
 {{#content "header" append="prepend"}}
 <link rel="stylesheet" href="/css/students.css">
+<style>
+    .button {
+        display: inline-flex;
+        height: 40px;
+        padding: 0;
+        background: #009578;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        overflow: hidden;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        margin-top: 5px;
+    }
+
+    .button:hover {
+        background: #008168;
+    }
+
+    .button:active {
+        background: #006e58;
+    }
+
+    .button-text,
+    .button-icon {
+        display: inline-flex;
+        align-items: center;
+        padding: 0 20px;
+        color: #fff;
+        height: 100%;
+    }
+
+    .button-text {
+        font-size: 16px;
+    }
+
+    .button-icon {
+        font-size: 1.5em;
+        background: rgba(0, 0, 0, 0.08);
+    }
+</style>
 
 {{/content}}
 
@@ -23,13 +66,19 @@
         <div class="box-header">
         </div>
         <div>
-            <a href="/trainee/export" class="btn-1">Export Trainee's List</a>
+            <a href="/trainee/export">
+                <button type="button" class="button">
+                    <span class="button-text">Export Trainee's List</span>
+                    <span class="button-icon">
+                        <ion-icon name="add-circle-outline"></ion-icon>
+                    </span>
+                </button>
+            </a>
         </div>
         <form action="/trainee/search" method="GET">
             <div class="form-group">
                 <div class="form-line">
-                    <label>Search By Name</label>
-                    <input type="text" name="search" class="form-control">
+                    <input type="text" name="search" class="form-control" placeholder="Search By Name...">
                 </div>
             </div>
 
