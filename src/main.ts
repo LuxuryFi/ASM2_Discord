@@ -26,7 +26,8 @@ async function bootstrap() {
   })
 
   hbs.handlebars.registerHelper('admin', function (role) {
-    if (role == 'admin') {
+    if (role == 'admin')
+     {
       return 'hidden';
     } else {
       return '';
