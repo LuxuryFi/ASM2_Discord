@@ -3,10 +3,10 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Admin {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn() //declare primary column with auto increment id
     id: number
 
-    @Column()
+    @Column() //declare normal column
     name: string
 
     @Column()
@@ -21,7 +21,7 @@ export class Admin {
     @Column()
     password: string
 
-    @Column({default:'admin'})
+    @Column({default:'admin'}) //declare column with default value 'admin'
     role_id : string
 
 }

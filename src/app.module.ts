@@ -20,11 +20,6 @@ import { UserModule } from './user/user.module';
 
 @Module({
   imports: [AdminModule, AuthModule, StaffModule, TraineeModule, TrainerModule, CategoryModule, SubjectModule, CourseModule, CourseDetailModule, RegistrationModule,
-    // TypeOrmModule.forRootAsync({
-    //   useFactory: async () => Object.assign(await getConnectionOptions(), {
-    //     autoLoadEntities: true,
-    //   })
-    // }),
     TypeOrmModule.forRoot({
       type: "mysql",
       host: process.env.DB_HOST,
