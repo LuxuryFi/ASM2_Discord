@@ -166,7 +166,7 @@
 
 <body>
     <div class="container">
-        <form action="/" method="POST" id="form">
+        <form action="/" method="POST" id="form-login">
             <div class="title">Login</div>
             <div class="input-box">
                 <input name="username" id="username" type="text" placeholder="Enter Your Email...." required>
@@ -193,6 +193,36 @@
         integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="./js/login.js"></script>
+    {{!-- <script>
+        var CORRECT_USER = 'hoaan123' ;
+        var CORRECT_PASS = 'hoaan123';
+        
+
+        var inputUsername = document.getElementById('username');
+        var inputPassword = document.getElementById('password');
+
+        var formLogin = document.getElementById('form-login');
+
+        if(formLogin.attachEvent) {
+            formLogin.attachEvent('submit', onFormSubmit);
+        }else {
+            formLogin.addEventListener('submit', onFormSubmit);
+        }
+        
+        function onFormSubmit(e) {
+            var username = inputUsername.value;
+            var password = inputPassword.value;
+
+            if (username == CORRECT_USER && password == CORRECT_PASS){
+                alert('Login Sucesss');
+            }
+            else {
+                alert('Login fail')
+                return false;
+            }
+        }
+    </script> --}}
+
     {{!-- <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script> --}}
 
     {{!-- <script src="./js/admin.js"></script> --}}

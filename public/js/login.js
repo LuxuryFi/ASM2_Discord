@@ -1,6 +1,6 @@
 $(document).ready(() => {
 
-    $('#form').submit(async function (event) {
+    $('#form-login').submit(async function (event) {
         const username = $('#username').val();
         const password = $('#password').val();
 

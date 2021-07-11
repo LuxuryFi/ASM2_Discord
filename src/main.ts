@@ -30,7 +30,8 @@ async function bootstrap() { // init function. This is startup function when our
   })
   //helper for check admin display
   hbs.handlebars.registerHelper('admin', function (role) {
-    if (role == 'admin') {
+    if (role == 'admin')
+     {
       return 'hidden';
     } else {
       return '';
