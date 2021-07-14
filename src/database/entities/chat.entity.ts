@@ -1,7 +1,6 @@
 import { Column, CreateDateColumn, Entity, PrimaryColumn, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
-
 export class ChatLog {
     @PrimaryColumn()
     username: string
@@ -14,5 +13,4 @@ export class ChatLog {
 
     @UpdateDateColumn()
     updated_at: Date;
-
 }

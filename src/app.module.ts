@@ -13,11 +13,11 @@ import { CourseModule } from './course/course.module';
 import { CourseDetailModule } from './course_detail/course-detail.module';
 import { RegistrationModule } from './registration/registration.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { getConnectionOptions } from 'typeorm';
 import { AppGateway } from './app.gateway';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
-
+import { join } from 'path';
+import { ChatModule } from './chat/chat.module';
 @Module({
   imports: [AdminModule, AuthModule, StaffModule, TraineeModule, TrainerModule, CategoryModule, SubjectModule, CourseModule, CourseDetailModule, RegistrationModule,
     TypeOrmModule.forRoot({
@@ -28,18 +28,18 @@ import { UserModule } from './user/user.module';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       entities: [
-        "dist/**/*.entity.{js,ts}"
-      ],
-      migrations: [
-        "src/migrations/**/*.ts"
-      ],
+        'src/**/*.entity.{ts}'
+      ]
+      ,
+      migrations: [join(__dirname, '**', '*.entity.{ts,js}')],
       cli: {
         "migrationsDir": "src/migrations"
       },
       synchronize: false,
       autoLoadEntities: true
     }),
-    UserModule],
+    UserModule,
+    ChatModule],
   controllers: [AppController],
   providers: [AppService, AppGateway],
 })

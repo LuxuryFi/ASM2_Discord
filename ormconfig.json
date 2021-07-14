@@ -6,7 +6,7 @@
     "password": "quocanh123",
     "database": "ASM2_APP",
     "entities": [
-        "dist/**/*.entity.{js,ts}"
+        "src/**/*.entity.{js,ts}"
     ],
     "migrations": [
         "src/migrations/**/*.ts"
