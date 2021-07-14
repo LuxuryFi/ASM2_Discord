@@ -15,4 +15,11 @@ describe('StaffController', () => {
   it('should be defined', () => {
     expect(controller).toBeDefined();
   });
+
+  it('should be returned', () => {
+    const staff = controller.index
+    expect(staff).toBeNaN();
+  })
+
+
 });

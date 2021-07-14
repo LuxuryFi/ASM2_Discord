@@ -1,9 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { getConnection, Repository } from 'typeorm';
 import { CreateStaffDto } from './dto/create-staff.dto';
 import { UpdateStaffDto } from './dto/update-staff.dto';
-import { Staff } from 'src/database/entities/staff.entity';
+import { Staff } from '../database/entities/staff.entity';
 @Injectable()
 export class StaffService {
     constructor(@InjectRepository(Staff) private staffRepository: Repository<Staff>) { }
@@ -15,21 +15,33 @@ export class StaffService {
         await this.staffRepository.save(staff); //Save staff to database
     }
 
-    async findOne(id: number): Promise<Staff> {
-        return await this.staffRepository.findOne(id); // Find one staff
+    async findOne(id: number) {
+        const staff = await this.staffRepository.findOne(id); // Find one staff
+
+        if (!staff) {
+            throw new HttpException('Staff not found', 404);
+        }
+        return staff;
     }
 
-    async findAll(): Promise<Staff[]> {
-        return await this.staffRepository.find(); //Find all staff
+    async findAll() {
+        const staffs =  await this.staffRepository.find(); //Find all staff
+
+        if (!staffs) {
+            throw new HttpException('Staff not found', 404);
+        }
+
+        return staffs;
     }
+
 
     async deleteOne(id: number): Promise<void> {
         await this.staffRepository.delete(id); //Delete one staff
     }
 
-    async updateOne(updateStaff: UpdateStaffDto): Promise<void> {
+    async updateOne(updateStaff: UpdateStaffDto){
         try {
-            await this.staffRepository.update( //Update staff
+             await this.staffRepository.update( //Update staff
                 { id: updateStaff.id }, //
                 {
                     name: updateStaff.name,
@@ -39,6 +51,8 @@ export class StaffService {
                     password: updateStaff.password
                 }
             )
+            const result = await this.staffRepository.findOne(updateStaff.id);
+            return result;
         } catch (error) {
             console.log(error)
         }
